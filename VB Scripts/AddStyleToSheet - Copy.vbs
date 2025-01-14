@@ -134,13 +134,12 @@ Sub CenterAlignAllText()
     usedRange.HorizontalAlignment = xlCenter
 End Sub
 
-' Applies table-like styling (borders, alternating row colors, etc.)
+' Applys table-like styling (borders, alternating row colors, etc.)
 Sub AddTableStyle()
     Dim ws As Worksheet
     Dim lastRow As Long
     Dim lastCol As Long
     Dim tableRange As Range
-    Dim i As Long
 
     ' Set the worksheet to the active sheet
     Set ws = ActiveSheet
@@ -160,14 +159,9 @@ Sub AddTableStyle()
     tableRange.Borders(xlInsideVertical).LineStyle = xlContinuous
     tableRange.Borders(xlInsideHorizontal).LineStyle = xlContinuous
 
-    ' Apply light grey borders
-    tableRange.Borders.Color = RGB(211, 211, 211) ' Light grey borders
-
-    ' Apply white text color to all cells in the table
-    tableRange.Font.Color = RGB(255, 255, 255) ' White text
-
-    ' Apply #121212 background color to all cells in the table
-    tableRange.Interior.Color = RGB(18, 18, 18) ' Dark background (#121212)
-
+    ' Alternate row colors for better readability
+    Dim i As Long
+    For i = 2 To lastRow Step 2
+        ws.Rows(i).Interior.Color = RGB(245, 245, 245) ' Light grey for alternating rows
+    Next i
 End Sub
-

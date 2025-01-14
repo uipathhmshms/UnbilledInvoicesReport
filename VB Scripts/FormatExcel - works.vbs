@@ -17,14 +17,13 @@ Sub FormatExcel()
     grandTotal = 0
     ProcessRows ws, objRange, months, grandTotal
 
-	' Remove the "סכום כולל במטבע עסקה" column (assuming it's column 6)
-    ws.Columns(6).Delete
-	' Remove the "תאריך פעילות" column (assuming it's column 7)
-	ws.Columns(6).Delete
-	
-	' Add grand total
-	lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
     AddGrandTotalRow ws, lastRow, months, grandTotal
+
+	' Remove the "סכום כולל במטבע עסקה" column (assuming it's column 6)
+    'ws.Columns(6).Delete
+	' Remove the "תאריך פעילות" column (assuming it's column 7)
+    'ws.Columns(7).Delete
 End Sub
 
 Sub ExtractUniqueMonths(ws As Worksheet, objRange As Range, ByRef months As Collection)
