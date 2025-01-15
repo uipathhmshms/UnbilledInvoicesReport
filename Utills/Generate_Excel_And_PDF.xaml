@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,2258</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,2397</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateExcel_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -108,42 +108,25 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateExcel" sap:VirtualizedContainerService.HintSize="688,2193" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreateExcel" sap:VirtualizedContainerService.HintSize="688,2332" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:FilterDataTable sap2010:Annotation.AnnotationText="remove unneccessary columns" DataTable="[in_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="626,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[in_dt_data]" SelectColumnsMode="Remove">
-      <ui:FilterDataTable.Filters>
-        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
-        </scg:List>
-      </ui:FilterDataTable.Filters>
-      <ui:FilterDataTable.SelectColumns>
-        <scg:List x:TypeArguments="InArgument" Capacity="4">
-          <InArgument x:TypeArguments="x:String">["קוד מנהל פרויקט"]</InArgument>
-        </scg:List>
-      </ui:FilterDataTable.SelectColumns>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:FilterDataTable>
-    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="626,1850" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="626,2221" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
       <ueab:ExcelProcessScopeX.Body>
         <ActivityAction x:TypeArguments="ui:IExcelProcess">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,1763" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="592,2134" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="530,1652" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_excelFileName+&quot;.xlsx&quot;)]">
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Create Custom Excel File" sap:VirtualizedContainerService.HintSize="530,2023" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_excelFileName+&quot;.xlsx&quot;)]">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
