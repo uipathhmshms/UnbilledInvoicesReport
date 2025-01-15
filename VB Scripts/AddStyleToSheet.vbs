@@ -10,17 +10,18 @@ Sub AddStyleToSheet()
     ' Get the used range in the worksheet
     Set usedRange = ActiveSheet.UsedRange
     
-    ' Get the width (number of columns) of the used range
-    intTableWidth = usedRange.Columns.Count
-    
+    lastRow = usedRange.Rows.Count
+	' Get the width (number of columns) of the used range
+    'intTableWidth = usedRange.Columns.Count
+	intTableWidth=ActiveSheet.Cells(lastRow, Columns.Count).End(xlToLeft).Column
+
     ' Define the starting cell of the table (A1 in this case)
     Set tableStart = Range("A1")
-    
+
     ' Set the range for the first row of the table based on the table's width (number of columns)
     Set firstRowRange = tableStart.Resize(1, intTableWidth)
     
 	' Get the last used row in the sheet 
-    lastRow = usedRange.Rows.Count
 	'------------------------------------------------Method calls------------------------------------------------
     ' Changes the background and text colors
     ApplyFirstRowBackgroundColor firstRowRange
@@ -139,19 +140,27 @@ Sub AddTableStyle()
     Dim ws As Worksheet
     Dim lastRow As Long
     Dim lastCol As Long
+    Dim headerLastCol As Long
+    Dim dataLastCol As Long
     Dim tableRange As Range
     Dim i As Long
-
+    
     ' Set the worksheet to the active sheet
     Set ws = ActiveSheet
-
-    ' Get the last row and last column of the used range
+    
+    ' Get the last row
     lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
-    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
-
+    
+    ' Get the last column by checking both header and data
+    headerLastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    dataLastCol = ws.Cells(lastRow, ws.Columns.Count).End(xlToLeft).Column
+    
+    ' Use the larger of the two values
+    lastCol = IIf(headerLastCol > dataLastCol, headerLastCol, dataLastCol)
+    
     ' Define the table range
     Set tableRange = ws.Range(ws.Cells(1, 1), ws.Cells(lastRow, lastCol))
-
+    
     ' Apply borders to the entire table
     tableRange.Borders(xlEdgeBottom).LineStyle = xlContinuous
     tableRange.Borders(xlEdgeRight).LineStyle = xlContinuous
@@ -159,15 +168,13 @@ Sub AddTableStyle()
     tableRange.Borders(xlEdgeTop).LineStyle = xlContinuous
     tableRange.Borders(xlInsideVertical).LineStyle = xlContinuous
     tableRange.Borders(xlInsideHorizontal).LineStyle = xlContinuous
-
+    
     ' Apply light grey borders
     tableRange.Borders.Color = RGB(211, 211, 211) ' Light grey borders
-
+    
     ' Apply white text color to all cells in the table
     tableRange.Font.Color = RGB(255, 255, 255) ' White text
-
+    
     ' Apply #121212 background color to all cells in the table
     tableRange.Interior.Color = RGB(18, 18, 18) ' Dark background (#121212)
-
 End Sub
-
