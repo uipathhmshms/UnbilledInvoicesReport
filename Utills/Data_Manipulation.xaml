@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1439,799</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Data_Manipulation_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -115,7 +115,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,201.5 300,231.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove unneccessary columns" DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[io_dt_data]" SelectColumnsMode="Remove">
+      <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove unneccessary columns" DataTable="[io_dt_data]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[io_dt_data]" SelectColumnsMode="Remove">
         <ui:FilterDataTable.Filters>
           <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
             <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -124,6 +124,8 @@
         <ui:FilterDataTable.SelectColumns>
           <scg:List x:TypeArguments="InArgument" Capacity="4">
             <InArgument x:TypeArguments="x:String">["קוד מנהל פרויקט"]</InArgument>
+            <InArgument x:TypeArguments="x:String">["תאריך אסמכתא"]</InArgument>
+            <InArgument x:TypeArguments="x:String">["סטטוס"]</InArgument>
           </scg:List>
         </ui:FilterDataTable.SelectColumns>
         <sap:WorkflowViewStateService.ViewState>
@@ -153,28 +155,34 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">200,345.5</av:Point>
-                  <av:Size x:Key="ShapeSize">200,124</av:Size>
+                  <av:Size x:Key="ShapeSize">200,52</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap2010:Annotation.AnnotationText="Keeps only the rows with &#xD;&#xA;תאריך פעילות&#xD;&#xA;from current year or previous one" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="Assign_2">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="sd:DataTable">[io_dt_data]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In io_dt_data.AsEnumerable()
+              <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                    <Assign sap2010:Annotation.AnnotationText="Keeps only the rows with &#xA;תאריך פעילות&#xA;from current year or previous one" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataTable">[io_dt_data]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From row In io_dt_data.AsEnumerable()
 Let parsedDate = DateTime.ParseExact(row.Field(Of datetime)("תאריך פעילות").tostring, "MM/dd/yyyy hh:mm:ss", Nothing)
 Let currentYear As Integer = DateTime.Now.Year
 Let previousYear As Integer = currentYear - 1
 Where parsedDate.Year = currentYear OrElse 
 			parsedDate.Year = previousYear
 Select row).CopyToDataTable]</InArgument>
-                </Assign.Value>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Assign>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                  </Sequence>
+                </ui:CommentOut.Body>
+              </ui:CommentOut>
             </FlowStep>
           </FlowStep.Next>
         </FlowStep>
