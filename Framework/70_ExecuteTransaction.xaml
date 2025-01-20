@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1137,842</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,995</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -183,17 +183,20 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:CreateDirectory>
     </Sequence>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Data_Manipulation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Utills\Data_Manipulation.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">
-          <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
-        </InOutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the Excel and PDF files inside the temp  folder&#xA;+ executes a script that convert the excel sheet to html" DisplayName="Generate_Excel_And_PDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utills\Generate_Excel_And_PDF.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">
+          <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_data(0)(&quot;מנהל פרוייקט&quot;).tostring" />
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">
+          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -201,11 +204,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Data_Manipulation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Utills\Data_Manipulation.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">[str_htmlContent]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">[str_excelFileName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">[dt_data(0)("מנהל פרוייקט").tostring]</InArgument>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">[dt_data]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the Excel and PDF files inside the temp  folder&#xA;+ executes a script that convert the excel sheet to html" DisplayName="Generate_Excel_And_PDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,155" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Utills\Generate_Excel_And_PDF.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
