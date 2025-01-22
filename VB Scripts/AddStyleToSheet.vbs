@@ -38,14 +38,17 @@ Sub AddStyleToSheet()
     ' Automatically adjust the width of each column to fit the content of the first row
     AutoFitColumns firstRowRange, intTableWidth
   
-    ' Center align all the text in the entire worksheet
-    CenterAlignAllText
+	' Aligns all cells to center and column E and C to the right
+    AlignText
 	
 	' Merge so the manager name will be written once
 	MergeFirstColumnRowsExceptFirstAndLast
 	
 	' Apply background color to the last row
     ApplyLastRowBackgroundColor lastRow, intTableWidth
+
+	' Formats all numbers with comma separator and no decimal points	
+	FormatNumbers
 	
 	' Applys table-like styling (borders, alternating row colors, etc.)
 	AddTableStyle
@@ -126,13 +129,22 @@ Sub CenterTextInFirstRow(firstRowRange As Range)
     firstRowRange.HorizontalAlignment = xlCenter
 End Sub
 
-Sub CenterAlignAllText()
+' Aligns all cells to center and column E and C to the right
+Sub AlignText()
     ' Get the used range in the active sheet
     Dim usedRange As Range
     Set usedRange = ActiveSheet.UsedRange
     
     ' Center align the text in the entire used range
     usedRange.HorizontalAlignment = xlCenter
+	' Right align text in columns C and E
+    
+	' Right align columns C and E (except the header row)
+    Dim i As Long
+    For i = 2 To usedRange.Rows.Count
+        Cells(i, 3).HorizontalAlignment = xlRight  ' Column C
+        Cells(i, 5).HorizontalAlignment = xlRight  ' Column E
+    Next i
 End Sub
 
 ' Applies table-like styling (borders, alternating row colors, etc.)
@@ -177,4 +189,21 @@ Sub AddTableStyle()
     
     ' Apply #121212 background color to all cells in the table
     tableRange.Interior.Color = RGB(18, 18, 18) ' Dark background (#121212)
+End Sub
+
+' Formats all numbers with comma separator and no decimal points
+Sub FormatNumbers()
+    ' Get the used range in the active sheet
+    Dim usedRange As Range
+    Set usedRange = ActiveSheet.UsedRange
+    
+    Dim cell As Range
+    
+    ' Loop through each cell in the used range
+    For Each cell In usedRange
+        If IsNumeric(cell.Value) Then
+			' If the cell contains a number, format as a number with comma separator and no decimal points
+			cell.NumberFormat = "#,##0" ' Number format with comma separators
+        End If
+    Next cell
 End Sub

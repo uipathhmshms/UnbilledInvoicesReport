@@ -98,15 +98,23 @@ Sub AddGrandTotalRow(ws As Worksheet, lastRow As Long, months As Collection, gra
     Dim j As Long
     Dim lastMonthColumn As Integer
 
+    ' Determine the column where the last month's data is
     lastMonthColumn = 6 + months.Count - 1
 
+    ' Set "Grand Total" in the last row, first column
     ws.Cells(lastRow, 1).Value = "Grand Total"
     
+    ' Loop through the columns and calculate the SUM for each month
     For j = 6 To lastMonthColumn
         ws.Cells(lastRow, j).Formula = "=SUM(" & ws.Cells(2, j).Address & ":" & ws.Cells(lastRow - 1, j).Address & ")"
-    Next
+    Next j
 
+    ' Set the grand total value in the last column (after the last month)
     ws.Cells(lastRow, lastMonthColumn + 1).Value = grandTotal
+
+    ' Add "Grand Total" header in the first row, last month column + 1
+    ws.Cells(1, lastMonthColumn + 1).Value = "Grand Total"
+    
 End Sub
 
 Function ParseIsraeliDate(dateString As String) As Date
