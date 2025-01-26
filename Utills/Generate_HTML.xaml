@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,970</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,813</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -120,7 +120,7 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="740,905" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap:VirtualizedContainerService.HintSize="696,748" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -153,7 +153,7 @@
             <av:Size x:Key="ShapeSize">434,52</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
           <ui:MultipleAssign.AssignOperations>
             <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
@@ -294,7 +294,7 @@
             <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,198.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="512,569" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="str_connectionString" />
             <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
@@ -358,7 +358,7 @@
             </Assign>
           </Sequence>
           <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)) AS Year,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103)) AS Month,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;&#x9;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;    &quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום כולל ללא אגורות עם מפריד אלפים&#xA;    &quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xA;    &quot;WHERE &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &gt;= DATEADD(MONTH, -12, GETDATE())&quot; &amp; vbCrLf &amp; _  ' Last 12 months filter&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &lt;= GETDATE()&quot; &amp; vbCrLf &amp; _  ' Exclude future dates&#xA;    &quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)),&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103))&quot; &amp; vbCrLf &amp; _&#xA;    &quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    Year ASC, Month;&quot;]">
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    YEAR(CONVERT(DATE, valueDate, 103)) AS Year, &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    MONTH(CONVERT(DATE, valueDate, 103)) AS Month, &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total  -- עיצוב סכום כולל ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;WHERE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot;&amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp;  &quot;') &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    AND CONVERT(DATE, valueDate, 103) &gt;= &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        END &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    AND CONVERT(DATE, valueDate, 103) &lt;= &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            ELSE GETDATE() &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        END &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    YEAR(CONVERT(DATE, valueDate, 103)), &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    MONTH(CONVERT(DATE, valueDate, 103)) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    Year ASC, Month ASC;&quot;]">
             <ui:ExecuteQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteQuery.Parameters>
@@ -368,6 +368,33 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExecuteQuery>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="388,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)) AS Year,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103)) AS Month,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;&#x9;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;    &quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום כולל ללא אגורות עם מפריד אלפים&#xA;    &quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xA;    &quot;WHERE &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &gt;= DATEADD(MONTH, -12, GETDATE())&quot; &amp; vbCrLf &amp; _  ' Last 12 months filter&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &lt;= GETDATE()&quot; &amp; vbCrLf &amp; _  ' Exclude future dates&#xA;    &quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)),&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103))&quot; &amp; vbCrLf &amp; _&#xA;    &quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    Year ASC, Month;&quot;]">
+                  <ui:ExecuteQuery.Parameters>
+                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                  </ui:ExecuteQuery.Parameters>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ExecuteQuery>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
         </Sequence>
         <FlowStep.Next>
           <x:Reference>__ReferenceID0</x:Reference>
