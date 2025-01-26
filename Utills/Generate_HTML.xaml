@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1038,970</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,970</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -126,13 +126,14 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="678,794" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+    <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_2">
       <Flowchart.Variables>
         <Variable x:TypeArguments="x:String" Name="str_sheet001" />
         <Variable x:TypeArguments="x:String" Name="str_sheet001BodyContent" />
         <Variable x:TypeArguments="x:String" Name="str_styleSheetContent" />
         <Variable x:TypeArguments="sd:DataTable" Name="dt_feedTable" />
         <Variable x:TypeArguments="x:String" Name="str_feedTableHtml" />
+        <Variable x:TypeArguments="x:String" Name="str_htmlStyle" />
       </Flowchart.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -140,51 +141,19 @@
           <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
           <av:Size x:Key="ShapeSize">60,75</av:Size>
           <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,97.5</av:PointCollection>
-          <x:Double x:Key="Height">757</x:Double>
-          <x:Double x:Key="Width">644</x:Double>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
         <x:Reference>__ReferenceID1</x:Reference>
       </Flowchart.StartNode>
-      <FlowStep>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">0,533</av:Point>
-            <av:Size x:Key="ShapeSize">200,94</av:Size>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads sheet001.html file that generated for current report" Content="[str_sheet001]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;sheet001.html&quot;)]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ReadTextFile_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:ReadTextFile>
-      </FlowStep>
-      <FlowStep>
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">0,663</av:Point>
-            <av:Size x:Key="ShapeSize">200,94</av:Size>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <ui:ReadTextFile File="{x:Null}" sap2010:Annotation.AnnotationText="reads the style sheet that generated for current report" Content="[str_styleSheetContent]" DisplayName="Read Text File" FileName="[Path.Combine(System.IO.Directory.GetCurrentDirectory(), &quot;TempReport&quot;,in_str_fileName+&quot;_files&quot;,&quot;stylesheet.css&quot;)]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ReadTextFile_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:ReadTextFile>
-      </FlowStep>
       <FlowStep x:Name="__ReferenceID0">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">83,228.5</av:Point>
+            <av:Point x:Key="ShapeLocation">83,198.5</av:Point>
             <av:Size x:Key="ShapeSize">434,52</av:Size>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
           <ui:MultipleAssign.AssignOperations>
             <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
@@ -207,6 +176,78 @@
 	)]</InArgument>
                 </ui:AssignOperation.Value>
               </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[str_htmlStyle]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["            html, body {" &amp; vbCrLf &amp; _ 
+"                padding: 20px;" &amp; vbCrLf &amp; _ 
+"                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
+"                direction: rtl;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .header {" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
+"                background-color: #4b0082; "  &amp; vbCrLf &amp; _ 
+"                color: white; "  &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .content {" &amp; vbCrLf &amp; _ 
+"                min-height: 500px;"  &amp; vbCrLf &amp; _ 
+"                width: 100%;"  &amp; vbCrLf &amp; _ 
+"                height 100%;"  &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .footer {" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                width: 100%;" &amp; vbCrLf &amp; _ 
+"                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                margin-top: 20px;"  &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                position: fixed; " &amp; vbCrLf &amp; _ 
+"                bottom: 0;" &amp; vbCrLf &amp; _ 
+"                background-color: #2c2c2c; "  &amp; vbCrLf &amp; _ 
+"                color: white; "  &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            td {" &amp; vbCrLf &amp; _ 
+"                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
+"                white-space: normal;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            th {" &amp; vbCrLf &amp; _ 
+"                padding: 12px 20px;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                border-top: 1px solid #444;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 1px solid #444;" &amp; vbCrLf &amp; _ 
+"                background-color: #2c2c2c;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            table {" &amp; vbCrLf &amp; _ 
+"                margin-bottom: 20px;" &amp; vbCrLf &amp; _ 
+"                background-color: transparent;" &amp; vbCrLf &amp; _ 
+"                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
+"                table-layout: auto;" &amp; vbCrLf &amp; _  ' Auto layout for column widths
+"                border-collapse: collapse;" &amp; vbCrLf &amp; _ 
+"                border: 1px solid #444;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            tr:hover {" &amp; vbCrLf &amp; _ 
+"                background-color: #ff4081;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _
+"            @media (prefers-color-scheme: dark) {" &amp; vbCrLf &amp; _ 
+"              .header, .footer {" &amp; vbCrLf &amp; _ 
+"                   background-color: transparent "  &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            @media (max-width: 768px) {" &amp; vbCrLf &amp; _ 
+"                table {" &amp; vbCrLf &amp; _ 
+"                margin-left: 50px;" &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"                th,td {" &amp; vbCrLf &amp; _ 
+"                   padding: 10px 10px;" &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"            }"]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
                 <ui:AssignOperation.To>
                   <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
@@ -218,88 +259,24 @@
 "        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;title&gt;דוח חשבוניות עסקה&lt;/title&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;style&gt;" &amp; vbCrLf &amp; _ 
-"            html, body {" &amp; vbCrLf &amp; _ 
-"                padding: 20px;" &amp; vbCrLf &amp; _ 
-"                color: white;" &amp; vbCrLf &amp; _ 
-"                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
-"                direction: rtl;" &amp; vbCrLf &amp; _ 
-"                background-color: #121212;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            .header {" &amp; vbCrLf &amp; _ 
-"                color: white;" &amp; vbCrLf &amp; _ 
-"                text-align: center;" &amp; vbCrLf &amp; _ 
-"                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
-"                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
-"                padding-bottom: 10px;"  &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            .content {" &amp; vbCrLf &amp; _ 
-"                min-height: 500px;"  &amp; vbCrLf &amp; _ 
-"                width: 100%;"  &amp; vbCrLf &amp; _ 
-"                height 100%;"  &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            .footer {" &amp; vbCrLf &amp; _ 
-"                color: white;" &amp; vbCrLf &amp; _ 
-"                text-align: center;" &amp; vbCrLf &amp; _ 
-"                width: 100%;" &amp; vbCrLf &amp; _ 
-"                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
-"                padding-top: 10px;"  &amp; vbCrLf &amp; _ 
-"                margin-top: 20px;"  &amp; vbCrLf &amp; _ 
-"                text-align: center;" &amp; vbCrLf &amp; _ 
-"                display: block;" &amp; vbCrLf &amp; _ 
-"                position: fixed; " &amp; vbCrLf &amp; _ 
-"                bottom: 0;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            td {" &amp; vbCrLf &amp; _ 
-"                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
-"                white-space: normal;" &amp; vbCrLf &amp; _ 
-"                padding: 12px 20px;" &amp; vbCrLf &amp; _ 
-"                text-align: center;" &amp; vbCrLf &amp; _ 
-"                border-bottom: 1px solid #444;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            th {" &amp; vbCrLf &amp; _ 
-"                padding: 12px 20px;" &amp; vbCrLf &amp; _ 
-"                text-align: center;" &amp; vbCrLf &amp; _ 
-"                background-color: #333;" &amp; vbCrLf &amp; _ 
-"                color: #fff;" &amp; vbCrLf &amp; _ 
-"                border-top: 1px solid #444;" &amp; vbCrLf &amp; _ 
-"                border-bottom: 1px solid #444;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            table {" &amp; vbCrLf &amp; _ 
-"                width: 60%;" &amp; vbCrLf &amp; _ 
-"                height: 60%;" &amp; vbCrLf &amp; _ 
-"                margin-bottom: 20px;" &amp; vbCrLf &amp; _ 
-"                background-color: #1e1e1e;" &amp; vbCrLf &amp; _ 
-"                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
-"                table-layout: auto;" &amp; vbCrLf &amp; _  ' Auto layout for column widths
-"                border-collapse: collapse;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _ 
-"            tr:hover {" &amp; vbCrLf &amp; _ 
-"                background-color: #3a3a3a;" &amp; vbCrLf &amp; _ 
-"            }" &amp; vbCrLf &amp; _
-"            @media (max-width: 768px) {" &amp; vbCrLf &amp; _ 
-"                table {" &amp; vbCrLf &amp; _ 
-"                margin-left: 50px;" &amp; vbCrLf &amp; _ 
-"                }" &amp; vbCrLf &amp; _ 
-"                th,td {" &amp; vbCrLf &amp; _ 
-"                   padding: 10px 10px;" &amp; vbCrLf &amp; _ 
-"                }" &amp; vbCrLf &amp; _ 
+				str_htmlStyle &amp; vbCrLf &amp; _
 "        &lt;/style&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/head&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;body&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;div class=""header""&gt;" &amp; vbCrLf &amp; _ 
-"            &lt;h1&gt;דוח חשבוניות עסקה&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
-"            &lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;div class=""content""&gt;" &amp; vbCrLf &amp; _ 
-"                &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
-"                &lt;h2&gt;מצורף 'מבט על' של מצב חשבוניות עסקה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
-"                &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
-"                &lt;div style=""text-align:center;""&gt;" &amp; vbCrLf &amp; _ 
-                    str_feedTableHtml &amp; vbCrLf &amp; _ 
-"                 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
-"        &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
-"            | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"        &lt;div class=""lightMode""&gt;" &amp; vbCrLf &amp; _ 
+"       	 &lt;div class=""header""&gt;" &amp; vbCrLf &amp; _ 
+"           	 &lt;h1&gt;דוח חשבוניות עסקה&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"           	 &lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+"       	 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"       	 &lt;div class=""content ""&gt;" &amp; vbCrLf &amp; _ 
+"          	        &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"            	    &lt;h2&gt;מצורף 'מבט על' של מצב חשבוניות עסקה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
+"            	    &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+                        str_feedTableHtml &amp; vbCrLf &amp; _ 
+"           &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"          &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
+"              | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"          &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
 "&lt;/html&gt;"]</InArgument>
@@ -314,7 +291,7 @@
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
             <av:Size x:Key="ShapeSize">200,81</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,228.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,198.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -381,7 +358,7 @@
             </Assign>
           </Sequence>
           <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)) AS Year,&quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103)) AS Month,&quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xD;&#xA;&#x9;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xD;&#xA;    &quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום כולל ללא אגורות עם מפריד אלפים&#xD;&#xA;    &quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;WHERE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &gt;= DATEADD(MONTH, -12, GETDATE())&quot; &amp; vbCrLf &amp; _  ' Last 12 months filter&#xD;&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &lt;= GETDATE()&quot; &amp; vbCrLf &amp; _  ' Exclude future dates&#xD;&#xA;    &quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)),&quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103))&quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;    &quot;    Year ASC, Month;&quot;]">
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)) AS Year,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103)) AS Month,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;&#x9;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;    &quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום כולל ללא אגורות עם מפריד אלפים&#xA;    &quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xA;    &quot;WHERE &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &gt;= DATEADD(MONTH, -12, GETDATE())&quot; &amp; vbCrLf &amp; _  ' Last 12 months filter&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &lt;= GETDATE()&quot; &amp; vbCrLf &amp; _  ' Exclude future dates&#xA;    &quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)),&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103))&quot; &amp; vbCrLf &amp; _&#xA;    &quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    Year ASC, Month;&quot;]">
             <ui:ExecuteQuery.Parameters>
               <scg:Dictionary x:TypeArguments="x:String, Argument" />
             </ui:ExecuteQuery.Parameters>
