@@ -4,6 +4,7 @@
     <x:Property Name="in_str_fileName" Type="InArgument(x:String)" />
     <x:Property Name="in_str_managerName" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_data" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_str_managerEmail" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -333,6 +334,7 @@
 "            	    &lt;h2&gt;מצורף 'מבט על' של מצב חשבוניות עסקה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
 "            	    &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
                         str_feedTableHtml &amp; vbCrLf &amp; _ 
+"            	    &lt;p&gt;**המייל של המנהל אליו ישלח הדוח הוא:."&amp; in_str_managerEmail &amp;"&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "           &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "          &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
 "              | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
