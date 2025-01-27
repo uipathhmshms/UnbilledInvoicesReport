@@ -184,14 +184,14 @@ Sub AddTableStyle()
     ' Apply light grey borders
     tableRange.Borders.Color = RGB(211, 211, 211) ' Light grey borders
     
-    ' Apply white text color to all cells in the table
-    tableRange.Font.Color = RGB(255, 255, 255) ' White text
-    
-    ' Apply #121212 background color to all cells in the table
-    tableRange.Interior.Color = RGB(18, 18, 18) ' Dark background (#121212)
+	' Define the range for the last row
+    Set lastRowRange = ws.Range(ws.Cells(lastRow, 1), ws.Cells(lastRow, lastCol))
+	' gray background and white font for the last row
+	lastRowRange.Interior.Color = RGB(51, 51, 51) ' RGB color for dark grey
+	lastRowRange.Font.Color = RGB(255, 255, 255) ' RGB color for white text
 End Sub
 
-' Formats all numbers with comma separator and no decimal points
+' Formats all numbers with comma separator and no decimal points EXCEPT THR "קוד סעיף תקציבי" COLUMN
 Sub FormatNumbers()
     ' Get the used range in the active sheet
     Dim usedRange As Range
@@ -201,7 +201,7 @@ Sub FormatNumbers()
     
     ' Loop through each cell in the used range
     For Each cell In usedRange
-        If IsNumeric(cell.Value) Then
+        If IsNumeric(cell.Value) And cell.Column <> 4 Then
 			' If the cell contains a number, format as a number with comma separator and no decimal points
 			cell.NumberFormat = "#,##0" ' Number format with comma separators
         End If
