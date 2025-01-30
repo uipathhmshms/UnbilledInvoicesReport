@@ -25,6 +25,8 @@ Sub FormatExcel()
 	' Add grand total
 	lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
     AddGrandTotalRow ws, lastRow, months, grandTotal
+	
+	SetSheetDirectionRTL ws
 End Sub
 
 Sub ExtractUniqueMonths(ws As Worksheet, objRange As Range, ByRef months As Collection)
@@ -126,3 +128,11 @@ Function ParseIsraeliDate(dateString As String) As Date
         ParseIsraeliDate = CDate("1/1/1900") ' Or some other default date
     End If
 End Function
+
+' Sub to set the sheet direction to Right-to-Left
+Sub SetSheetDirectionRTL(sheet As Worksheet)
+    With sheet
+        .DisplayRightToLeft = True ' Set sheet direction to Right-to-Left
+        .Cells.HorizontalAlignment = xlRight ' Align text to the right
+    End With
+End Sub

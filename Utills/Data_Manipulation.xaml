@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1439,799</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,799</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Data_Manipulation_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -126,6 +126,7 @@
             <InArgument x:TypeArguments="x:String">["קוד מנהל פרויקט"]</InArgument>
             <InArgument x:TypeArguments="x:String">["תאריך אסמכתא"]</InArgument>
             <InArgument x:TypeArguments="x:String">["סטטוס"]</InArgument>
+            <InArgument x:TypeArguments="x:String">["דוא""ל עבודה"]</InArgument>
           </scg:List>
         </ui:FilterDataTable.SelectColumns>
         <sap:WorkflowViewStateService.ViewState>
