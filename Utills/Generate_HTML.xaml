@@ -9,7 +9,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,813</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -121,51 +121,46 @@
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="696,748" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="str_sheet001" />
+      <Variable x:TypeArguments="x:String" Name="str_sheet001BodyContent" />
+      <Variable x:TypeArguments="x:String" Name="str_styleSheetContent" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_feedTable" />
+      <Variable x:TypeArguments="x:String" Name="str_feedTableHtml" />
+      <Variable x:TypeArguments="x:String" Name="str_htmlStyle" />
+      <Variable x:TypeArguments="x:Double" Name="dbl_sumOfIncome" />
+      <Variable x:TypeArguments="x:Double" Name="dbl_sumOfProforma" />
+      <Variable x:TypeArguments="x:Double" Name="dbl_sumOfTotal" />
+    </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,97.5</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_2">
-      <Flowchart.Variables>
-        <Variable x:TypeArguments="x:String" Name="str_sheet001" />
-        <Variable x:TypeArguments="x:String" Name="str_sheet001BodyContent" />
-        <Variable x:TypeArguments="x:String" Name="str_styleSheetContent" />
-        <Variable x:TypeArguments="sd:DataTable" Name="dt_feedTable" />
-        <Variable x:TypeArguments="x:String" Name="str_feedTableHtml" />
-        <Variable x:TypeArguments="x:String" Name="str_htmlStyle" />
-        <Variable x:TypeArguments="x:Double" Name="dbl_sumOfIncome" />
-        <Variable x:TypeArguments="x:Double" Name="dbl_sumOfProforma" />
-        <Variable x:TypeArguments="x:Double" Name="dbl_sumOfTotal" />
-      </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID2</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
-          <av:Size x:Key="ShapeSize">60,75</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,97.5</av:PointCollection>
+          <av:Point x:Key="ShapeLocation">83,208.5</av:Point>
+          <av:Size x:Key="ShapeSize">434,52</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,260.5 300,290.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Flowchart.StartNode>
-        <x:Reference>__ReferenceID1</x:Reference>
-      </Flowchart.StartNode>
-      <FlowStep x:Name="__ReferenceID0">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">83,198.5</av:Point>
-            <av:Size x:Key="ShapeSize">434,52</av:Size>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,302" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
-          <ui:MultipleAssign.AssignOperations>
-            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[str_htmlStyle]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["            html, body {" &amp; vbCrLf &amp; _ 
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_htmlStyle]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["            html, body {" &amp; vbCrLf &amp; _ 
 "                padding: 20px;" &amp; vbCrLf &amp; _ 
 "                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
 "                direction: rtl;" &amp; vbCrLf &amp; _ 
@@ -237,14 +232,14 @@
 "                   padding: 10px 10px;" &amp; vbCrLf &amp; _ 
 "                }" &amp; vbCrLf &amp; _ 
 "            }"]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(dt_feedTable.RowCount=0,"",
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(dt_feedTable.RowCount=0,"",
 	"&lt;table border='1'&gt;" &amp; 
       "&lt;tr&gt;" &amp; 
       String.Join("", From c In dt_feedTable.Columns.Cast(Of DataColumn)() 
@@ -257,38 +252,38 @@
                             "&lt;/tr&gt;") &amp; 
 	  "&lt;/table&gt;"
 	)]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:Double">[dbl_sumOfIncome]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Income")))]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:Double">[dbl_sumOfProforma]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Proforma")))]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:Double">[dbl_sumOfTotal]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Total")))]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(dt_feedTable.Rows.Count = 0, "", 
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfIncome]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Income")))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfProforma]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Proforma")))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfTotal]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Total")))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(dt_feedTable.Rows.Count = 0, "", 
     "&lt;table border='1'&gt;" &amp; 
       "&lt;tr&gt;" &amp; 
       String.Join("", From c In dt_feedTable.Columns.Cast(Of DataColumn)() 
@@ -307,14 +302,14 @@
       "&lt;/tr&gt;" &amp; 
     "&lt;/table&gt;"
 )]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
-                <ui:AssignOperation.To>
-                  <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
-                </ui:AssignOperation.To>
-                <ui:AssignOperation.Value>
-                  <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _ 
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _ 
 "&lt;html&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;head&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
@@ -342,126 +337,111 @@
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
 "&lt;/html&gt;"]</InArgument>
-                </ui:AssignOperation.Value>
-              </ui:AssignOperation>
-            </scg:List>
-          </ui:MultipleAssign.AssignOperations>
-        </ui:MultipleAssign>
-      </FlowStep>
-      <FlowStep x:Name="__ReferenceID1">
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,290.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,52</av:Size>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;[&quot;&quot;**Multiple Assign activity performed the following assignments**: &quot; &amp; &#xA;    &quot;Variable &quot; &amp; str_htmlStyle.ToString() &amp; &quot; updated with value: &quot; &amp; &#xA;    &quot; html, body { padding: 20px; font-family: 'Arial', sans-serif; direction: rtl; } &quot; &amp; &#xA;    &quot;.header { text-align: center; border-bottom: 4px solid #ff4081; margin-bottom: 20px; background-color: #4b0082; color: white; } &quot; &amp; &#xA;    &quot;.content { min-height: 500px; width: 100%; height: 100%; } &quot; &amp; &#xA;    &quot;.footer { text-align: center; width: 100%; border-top: 4px solid #ff4081; margin-top: 20px; position: fixed; bottom: 0; background-color: #2c2c2c; color: white; } &quot; &amp; &#xA;    &quot;td { word-wrap: break-word; white-space: normal; text-align: center; } &quot; &amp; &#xA;    &quot;tr { margin: 0; } &quot; &amp; &#xA;    &quot;th { padding: 12px 20px; text-align: center; border-top: 1px solid #444; border-bottom: 1px solid #444; background-color: #2c2c2c; color: white; } &quot; &amp; &#xA;    &quot;table { margin-bottom: 20px; background-color: transparent; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); table-layout: auto; border-collapse: collapse; border: 1px solid #444; } &quot; &amp; &#xA;    &quot;.grand-total { background-color: #2c2c2c; color: white; } &quot; &amp; &#xA;    &quot;tr:hover { background-color: #ff4081; } &quot; &amp; &#xA;    &quot;@media (prefers-color-scheme: dark) { .header, .footer { background-color: transparent; } } &quot; &amp; &#xA;    &quot;@media (max-width: 768px) { table { margin-left: 50px; } th, td { padding: 10px 10px; } }&quot;&quot;] &quot; &amp; &#xA;    &quot;Variable &quot; &amp; str_feedTableHtml.ToString() &amp; &quot; updated with value: &quot; &amp; &#xA;    &quot;If(dt_feedTable.RowCount=0, &quot;&quot;&quot;&quot;, &quot; &amp; &#xA;    &quot;&quot;&quot;&lt;table border='1'&gt;&quot; &amp; &#xA;    &quot;&lt;tr&gt;&quot; &amp; String.Join(&quot;&quot;, dt_feedTable.Columns.Cast(Of DataColumn)().Select(Function(c) &quot;&lt;th&gt;&quot; &amp; c.ColumnName &amp; &quot;&lt;/th&gt;&quot;)) &amp; &#xA;    &quot;&lt;/tr&gt;&quot; &amp; &#xA;    String.Join(&quot;&quot;, dt_feedTable.Rows.Cast(Of DataRow)().Select(Function(r) &quot;&lt;tr&gt;&quot; &amp; &#xA;        String.Join(&quot;&quot;, r.ItemArray.Select(Function(i) &quot;&lt;td&gt;&quot; &amp; i.ToString() &amp; &quot;&lt;/td&gt;&quot;)) &amp; &#xA;        &quot;&lt;/tr&gt;&quot;)) &amp; &#xA;    &quot;&lt;/table&gt;&quot;&quot;)&quot;]" />
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <FlowStep x:Name="__ReferenceID2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
+          <av:Size x:Key="ShapeSize">200,81</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,208.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="str_connectionString" />
+          <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
+        </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
-            <av:Size x:Key="ShapeSize">200,81</av:Size>
-            <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,198.5</av:PointCollection>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <Sequence.Variables>
-            <Variable x:TypeArguments="x:String" Name="str_connectionString" />
-            <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
+            <Variable x:TypeArguments="x:String" Name="str_dbName" />
+            <Variable x:TypeArguments="x:String" Name="str_serverName" />
+            <Variable x:TypeArguments="x:String" Name="str_dbUserName" />
+            <Variable x:TypeArguments="ss:SecureString" Name="str_dbUserPass" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_6">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="str_dbName" />
-              <Variable x:TypeArguments="x:String" Name="str_serverName" />
-              <Variable x:TypeArguments="x:String" Name="str_dbUserName" />
-              <Variable x:TypeArguments="ss:SecureString" Name="str_dbUserPass" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database name from cloud" AssetName="Accountant_DB_databaseName" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
-              <ui:GetRobotAsset.Value>
-                <OutArgument x:TypeArguments="x:String">[str_dbName]</OutArgument>
-              </ui:GetRobotAsset.Value>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:GetRobotAsset>
-            <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get servername from cloud" AssetName="Accountant_DB_Server_Name" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
-              <ui:GetRobotAsset.Value>
-                <OutArgument x:TypeArguments="x:String">[str_serverName]</OutArgument>
-              </ui:GetRobotAsset.Value>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:GetRobotAsset>
-            <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database user's credentials from cloud" AssetName="Accountant_DB_Cred" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2" Password="[str_dbUserPass]" Username="[str_dbUserName]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:GetRobotCredential>
-            <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_2">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[str_connectionString]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String" xml:space="preserve">["Data Source="&amp; str_serverName &amp;
-";Initial Catalog=" &amp; str_dbName &amp;
-";User ID=" &amp; str_dbUserName &amp;
-";Password="&amp; Marshal.PtrToStringBSTR(Marshal.SecureStringToBSTR(str_dbUserPass)) &amp;
-";Trusted_Connection=True;TrustServerCertificate=True;"]</InArgument>
-              </Assign.Value>
-            </Assign>
-          </Sequence>
-          <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_2" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM') AS activityDate,  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total  -- עיצוב סכום כולל ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;WHERE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &gt;= &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &lt;= &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            ELSE GETDATE()&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM')  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    activityDate ASC;&quot;]">
-            <ui:ExecuteQuery.Parameters>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
-            </ui:ExecuteQuery.Parameters>
+          <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database name from cloud" AssetName="Accountant_DB_databaseName" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
+            <ui:GetRobotAsset.Value>
+              <OutArgument x:TypeArguments="x:String">[str_dbName]</OutArgument>
+            </ui:GetRobotAsset.Value>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:ExecuteQuery>
-          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-            <ui:CommentOut.Body>
-              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="388,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)) AS Year,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103)) AS Month,&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;&#x9;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום ללא אגורות עם מפריד אלפים&#xA;    &quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total&quot; &amp; vbCrLf &amp; _  ' עיצוב סכום כולל ללא אגורות עם מפריד אלפים&#xA;    &quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xA;    &quot;WHERE &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &gt;= DATEADD(MONTH, -12, GETDATE())&quot; &amp; vbCrLf &amp; _  ' Last 12 months filter&#xA;    &quot;    AND CONVERT(DATE, valueDate, 103) &lt;= GETDATE()&quot; &amp; vbCrLf &amp; _  ' Exclude future dates&#xA;    &quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    YEAR(CONVERT(DATE, valueDate, 103)),&quot; &amp; vbCrLf &amp; _&#xA;    &quot;    MONTH(CONVERT(DATE, valueDate, 103))&quot; &amp; vbCrLf &amp; _&#xA;    &quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xA;    &quot;    Year ASC, Month;&quot;]">
-                  <ui:ExecuteQuery.Parameters>
-                    <scg:Dictionary x:TypeArguments="x:String, Argument" />
-                  </ui:ExecuteQuery.Parameters>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:ExecuteQuery>
-              </Sequence>
-            </ui:CommentOut.Body>
+          </ui:GetRobotAsset>
+          <ui:GetRobotAsset TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get servername from cloud" AssetName="Accountant_DB_Server_Name" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+            <ui:GetRobotAsset.Value>
+              <OutArgument x:TypeArguments="x:String">[str_serverName]</OutArgument>
+            </ui:GetRobotAsset.Value>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ui:CommentOut>
+          </ui:GetRobotAsset>
+          <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Get database user's credentials from cloud" AssetName="Accountant_DB_Cred" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Root/Finance/.General" sap:VirtualizedContainerService.HintSize="434,174" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3" Password="[str_dbUserPass]" Username="[str_dbUserName]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:GetRobotCredential>
+          <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[str_connectionString]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">["Data Source="&amp; str_serverName &amp;
+";Initial Catalog=" &amp; str_dbName &amp;
+";User ID=" &amp; str_dbUserName &amp;
+";Password="&amp; Marshal.PtrToStringBSTR(Marshal.SecureStringToBSTR(str_dbUserPass)) &amp;
+";Trusted_Connection=True;TrustServerCertificate=True;"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned str_connectionString to&quot; + str_connectionString.ToString()]" />
         </Sequence>
-        <FlowStep.Next>
-          <x:Reference>__ReferenceID0</x:Reference>
-        </FlowStep.Next>
-      </FlowStep>
-    </Flowchart>
-  </Sequence>
+        <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM') AS activityDate,  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total  -- עיצוב סכום כולל ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xA;&quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xA;&quot;WHERE &quot; &amp; vbCrLf &amp; _&#xA;&quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &gt;= &quot; &amp; vbCrLf &amp; _&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)&quot; &amp; vbCrLf &amp; _&#xA;&quot;            ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)&quot; &amp; vbCrLf &amp; _&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &lt;= &quot; &amp; vbCrLf &amp; _&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)&quot; &amp; vbCrLf &amp; _&#xA;&quot;            ELSE GETDATE()&quot; &amp; vbCrLf &amp; _&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xA;&quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM')  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xA;&quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;    activityDate ASC;&quot;]">
+          <ui:ExecuteQuery.Parameters>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:ExecuteQuery.Parameters>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExecuteQuery>
+      </Sequence>
+      <FlowStep.Next>
+        <x:Reference>__ReferenceID0</x:Reference>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID1</x:Reference>
+  </Flowchart>
 </Activity>
