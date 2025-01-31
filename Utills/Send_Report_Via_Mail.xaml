@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,1215</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1439,1924</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Report_Via_Mail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -46,6 +46,7 @@
       <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
       <x:String>UiPath.MicrosoftOffice365.Activities.Mail</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -100,15 +101,19 @@
       <AssemblyReference>System.CodeDom</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Send_Report_Via_Mail" sap:VirtualizedContainerService.HintSize="572,1150" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Send_Report_Via_Mail" sap:VirtualizedContainerService.HintSize="648,1859" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;AzureApp_ApplicationId&quot;).ToString]" ApplicationSecret="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;AzureApp_MailKey&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="510,1039" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;Mail365_TenantId&quot;).ToString]" UseConnectionService="False">
+    <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;AzureApp_ApplicationId&quot;).ToString]" ApplicationSecret="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;AzureApp_MailKey&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="586,1748" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" RuntimeItemInputMode="Browse" TenantId="[GlobalVariables.dic_str_obj_GeneralAssets(&quot;Mail365_TenantId&quot;).ToString]" UseConnectionService="False">
       <uma:Office365ApplicationScope.AuthenticationScopes>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
           <InArgument x:TypeArguments="x:String">https://graph.microsoft.com/.default</InArgument>
@@ -119,7 +124,7 @@
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,803" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,1512" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="str_mailCC" />
             </Sequence.Variables>
@@ -128,19 +133,44 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Unbilled_Invoices_Report_Mail_CC" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/UnbilledInvoices" sap:VirtualizedContainerService.HintSize="434,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="Unbilled_Invoices_Report_Mail_CC" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Root/Finance/UnbilledInvoices" sap:VirtualizedContainerService.HintSize="510,143" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
               <ui:GetRobotAsset.Value>
                 <OutArgument x:TypeArguments="x:String">[str_mailCC]</OutArgument>
               </ui:GetRobotAsset.Value>
             </ui:GetRobotAsset>
-            <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="RPA_Office_Automation@hms.co.il" AuthScopesInvalid="False" Body="[in_str_htmlContent]" Cc="[split(str_mailCC,&quot;,&quot;)]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot; בדיקה דוח חשבוניות עסקה&quot;+&quot; &quot;+in_projectManagerName]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()}]">
-              <umam:SendMail.Attachments>
-                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-                  <InArgument x:TypeArguments="x:String">["TempReport\"+in_str_excelFileName+".xlsx"]</InArgument>
-                </scg:List>
-              </umam:SendMail.Attachments>
-            </umam:SendMail>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail from 'RPA_Office_Automation@hms.co.il' with subject title '&quot; &amp; &#xD;&#xA;    &quot;&amp;quot; בדיקה דוח חשבוניות עסקה&amp;quot; &amp;quot;&quot; &amp; in_projectManagerName &amp; &#xD;&#xA;    &quot;' and body '&quot; &amp; in_str_htmlContent &amp; &quot;' was sent to &quot; &amp; &#xD;&#xA;    QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString() &amp; &#xD;&#xA;    &quot; with attachment 'TempReport\&quot; &amp; in_str_excelFileName &amp; &quot;.xlsx'&quot;]" />
+            <If Condition="[cint(QueueItem_CurrentTransaction.SpecificContent(&quot;ReportRowsNo&quot;))&lt;&gt;0]" sap:VirtualizedContainerService.HintSize="510,1060" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,439" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="RPA_Office_Automation@hms.co.il" AuthScopesInvalid="False" Body="[in_str_htmlContent]" Cc="[split(str_mailCC,&quot;,&quot;)]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_1" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot; בדיקה דוח חשבוניות עסקה&quot;+&quot; &quot;+in_projectManagerName]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()}]">
+                    <umam:SendMail.Attachments>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                        <InArgument x:TypeArguments="x:String">["TempReport\"+in_str_excelFileName+".xlsx"]</InArgument>
+                      </scg:List>
+                    </umam:SendMail.Attachments>
+                  </umam:SendMail>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,439" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <umam:SendMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" ContinueOnError="{x:Null}" From="{x:Null}" ReplyTo="{x:Null}" Account="RPA_Office_Automation@hms.co.il" AuthScopesInvalid="False" Body="[in_str_htmlContent]" Cc="[split(str_mailCC,&quot;,&quot;)]" DisplayName="Send Mail" sap:VirtualizedContainerService.HintSize="434,351" sap2010:WorkflowViewState.IdRef="SendMail_2" Importance="Normal" IsBodyHTML="True" IsDraft="False" Subject="[&quot; בדיקה דוח חשבוניות עסקה&quot;+&quot; &quot;+in_projectManagerName]" To="[{QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString()}]">
+                    <umam:SendMail.Attachments>
+                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+                    </umam:SendMail.Attachments>
+                  </umam:SendMail>
+                </Sequence>
+              </If.Else>
+            </If>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail from 'RPA_Office_Automation@hms.co.il' with subject title '&quot; &amp; &#xA;    &quot;&amp;quot; בדיקה דוח חשבוניות עסקה&amp;quot; &amp;quot;&quot; &amp; in_projectManagerName &amp; &#xA;    &quot;' and body '&quot; &amp; in_str_htmlContent &amp; &quot;' was sent to &quot; &amp; &#xA;    QueueItem_CurrentTransaction.SpecificContent(&quot;EmailAddress&quot;).ToString() &amp; &#xA;    &quot; with attachment 'TempReport\&quot; &amp; in_str_excelFileName &amp; &quot;.xlsx'&quot;]" />
           </Sequence>
         </ActivityAction>
       </uma:Office365ApplicationScope.Body>
