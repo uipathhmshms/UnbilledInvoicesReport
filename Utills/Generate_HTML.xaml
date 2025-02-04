@@ -5,11 +5,12 @@
     <x:Property Name="in_str_managerName" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_data" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_str_managerEmail" Type="InArgument(x:String)" />
+    <x:Property Name="in_bool_isExcelNeede" Type="InArgument(x:Boolean)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,702</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1439,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -152,7 +153,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,260.5 300,290.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,271" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
@@ -234,26 +235,6 @@
 "            }"]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
-              <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
-              </ui:AssignOperation.To>
-              <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(dt_feedTable.RowCount=0,"",
-	"&lt;table border='1'&gt;" &amp; 
-      "&lt;tr&gt;" &amp; 
-      String.Join("", From c In dt_feedTable.Columns.Cast(Of DataColumn)() 
-                     Select $"&lt;th&gt;{c.ColumnName}&lt;/th&gt;") &amp; 
-      "&lt;/tr&gt;" &amp; 
-      String.Join("", From r In dt_feedTable.Rows.Cast(Of DataRow)() 
-                     Select "&lt;tr&gt;" &amp; 
-                            String.Join("", From i In r.ItemArray 
-                                           Select $"&lt;td&gt;{i.ToString()}&lt;/td&gt;") &amp; 
-                            "&lt;/tr&gt;") &amp; 
-	  "&lt;/table&gt;"
-	)]</InArgument>
-              </ui:AssignOperation.Value>
-            </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:Double">[dbl_sumOfIncome]</OutArgument>
@@ -327,7 +308,9 @@
 "       	 &lt;div class=""content ""&gt;" &amp; vbCrLf &amp; _ 
 "          	        &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
 "            	    &lt;h2&gt;מצורף 'מבט על' של מצב חשבוניות עסקה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
-"            	    &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+					If(in_bool_isExcelNeede,
+						" &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" ,
+						"")&amp; vbCrLf &amp; _
                         str_feedTableHtml &amp; vbCrLf &amp; _ 
 "            	    &lt;p&gt;**המייל של המנהל אליו ישלח הדוח הוא:."&amp; in_str_managerEmail &amp;"&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "           &lt;/div&gt;" &amp; vbCrLf &amp; _ 
@@ -443,5 +426,204 @@
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID1</x:Reference>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">3,524</av:Point>
+          <av:Size x:Key="ShapeSize">434,52</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">310,270.5 310,300.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_htmlStyle]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["            html, body {" &amp; vbCrLf &amp; _ 
+"                padding: 20px;" &amp; vbCrLf &amp; _ 
+"                font-family: 'Arial', sans-serif;" &amp; vbCrLf &amp; _ 
+"                direction: rtl;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .header {" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
+"                background-color: #4b0082; "  &amp; vbCrLf &amp; _ 
+"                color: white; "  &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .content {" &amp; vbCrLf &amp; _ 
+"                min-height: 500px;"  &amp; vbCrLf &amp; _ 
+"                width: 100%;"  &amp; vbCrLf &amp; _ 
+"                height 100%;"  &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .footer {" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                width: 100%;" &amp; vbCrLf &amp; _ 
+"                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                margin-top: 20px;"  &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                position: fixed; " &amp; vbCrLf &amp; _ 
+"                bottom: 0;" &amp; vbCrLf &amp; _ 
+"                background-color: #2c2c2c; "  &amp; vbCrLf &amp; _ 
+"                color: white; "  &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            td {" &amp; vbCrLf &amp; _ 
+"                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
+"                white-space: normal;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            tr {" &amp; vbCrLf &amp; _ 
+"                margin: 0;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            th {" &amp; vbCrLf &amp; _ 
+"                padding: 12px 20px;" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                border-top: 1px solid #444;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 1px solid #444;" &amp; vbCrLf &amp; _ 
+"                background-color: #2c2c2c;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            table {" &amp; vbCrLf &amp; _ 
+"                margin-bottom: 20px;" &amp; vbCrLf &amp; _ 
+"                background-color: transparent;" &amp; vbCrLf &amp; _ 
+"                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);" &amp; vbCrLf &amp; _ 
+"                table-layout: auto;" &amp; vbCrLf &amp; _  ' Auto layout for column widths
+"                border-collapse: collapse;" &amp; vbCrLf &amp; _ 
+"                border: 1px solid #444;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            .grand-total {" &amp; vbCrLf &amp; _ 
+"                background-color: #2c2c2c;" &amp; vbCrLf &amp; _ 
+"                color: white;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _
+"            tr:hover {" &amp; vbCrLf &amp; _ 
+"                background-color: #ff4081;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _
+"            @media (prefers-color-scheme: dark) {" &amp; vbCrLf &amp; _ 
+"              .header, .footer {" &amp; vbCrLf &amp; _ 
+"                   background-color: transparent "  &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            @media (max-width: 768px) {" &amp; vbCrLf &amp; _ 
+"                table {" &amp; vbCrLf &amp; _ 
+"                margin-left: 50px;" &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"                th,td {" &amp; vbCrLf &amp; _ 
+"                   padding: 10px 10px;" &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _ 
+"            }"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(dt_feedTable.RowCount=0,"",
+	"&lt;table border='1'&gt;" &amp; 
+      "&lt;tr&gt;" &amp; 
+      String.Join("", From c In dt_feedTable.Columns.Cast(Of DataColumn)() 
+                     Select $"&lt;th&gt;{c.ColumnName}&lt;/th&gt;") &amp; 
+      "&lt;/tr&gt;" &amp; 
+      String.Join("", From r In dt_feedTable.Rows.Cast(Of DataRow)() 
+                     Select "&lt;tr&gt;" &amp; 
+                            String.Join("", From i In r.ItemArray 
+                                           Select $"&lt;td&gt;{i.ToString()}&lt;/td&gt;") &amp; 
+                            "&lt;/tr&gt;") &amp; 
+	  "&lt;/table&gt;"
+	)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfIncome]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Income")))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfProforma]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Proforma")))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfTotal]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Total")))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(dt_feedTable.Rows.Count = 0, "", 
+    "&lt;table border='1'&gt;" &amp; 
+      "&lt;tr&gt;" &amp; 
+      String.Join("", From c In dt_feedTable.Columns.Cast(Of DataColumn)() 
+                     Select "&lt;th&gt;" &amp; c.ColumnName &amp; "&lt;/th&gt;") &amp; 
+      "&lt;/tr&gt;" &amp; 
+      String.Join("", From r In dt_feedTable.Rows.Cast(Of DataRow)() 
+                     Select "&lt;tr&gt;" &amp; 
+                            String.Join("", From i In r.ItemArray 
+                                           Select "&lt;td&gt;" &amp; i.ToString() &amp; "&lt;/td&gt;") &amp; 
+                            "&lt;/tr&gt;") &amp; 
+      "&lt;tr class='grand-total'&gt;" &amp;
+	      "&lt;td&gt;Grand Total&lt;/td&gt;" &amp; 
+	      "&lt;td&gt;" &amp; dbl_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
+		  "&lt;td&gt;" &amp; dbl_sumOfProforma.ToString("N") &amp; "&lt;/td&gt;" &amp;
+	      "&lt;td&gt;" &amp; dbl_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
+      "&lt;/tr&gt;" &amp; 
+    "&lt;/table&gt;"
+)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;" &amp; vbCrLf &amp; _ 
+"&lt;html&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;head&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;meta charset=""UTF-8""&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;title&gt;דוח חשבוניות עסקה&lt;/title&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;style&gt;" &amp; vbCrLf &amp; _ 
+				str_htmlStyle &amp; vbCrLf &amp; _
+"        &lt;/style&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;/head&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;body&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;div class=""lightMode""&gt;" &amp; vbCrLf &amp; _ 
+"       	 &lt;div class=""header""&gt;" &amp; vbCrLf &amp; _ 
+"           	 &lt;h1&gt;דוח חשבוניות עסקה&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"           	 &lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+"       	 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"       	 &lt;div class=""content ""&gt;" &amp; vbCrLf &amp; _ 
+"          	        &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"            	    &lt;h2&gt;מצורף 'מבט על' של מצב חשבוניות עסקה בפרויקטים בהנהלתך&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
+"            	    &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+                        str_feedTableHtml &amp; vbCrLf &amp; _ 
+"            	    &lt;p&gt;**המייל של המנהל אליו ישלח הדוח הוא:."&amp; in_str_managerEmail &amp;"&lt;/p&gt;" &amp; vbCrLf &amp; _ 
+"           &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"          &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
+"              | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"          &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
+"    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
+"&lt;/html&gt;"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+    </FlowStep>
   </Flowchart>
 </Activity>

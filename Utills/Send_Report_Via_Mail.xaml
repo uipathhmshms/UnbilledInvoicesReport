@@ -47,6 +47,7 @@
       <x:String>UiPath.MicrosoftOffice365.Activities.Mail</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -138,7 +139,7 @@
                 <OutArgument x:TypeArguments="x:String">[str_mailCC]</OutArgument>
               </ui:GetRobotAsset.Value>
             </ui:GetRobotAsset>
-            <If Condition="[cint(QueueItem_CurrentTransaction.SpecificContent(&quot;ReportRowsNo&quot;))&lt;&gt;0]" sap:VirtualizedContainerService.HintSize="510,1060" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[in_str_excelFileName&lt;&gt;&quot;None&quot;]" sap:VirtualizedContainerService.HintSize="510,1060" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="476,439" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
