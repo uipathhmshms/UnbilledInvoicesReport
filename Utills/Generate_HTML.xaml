@@ -120,6 +120,9 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_3">
@@ -130,9 +133,9 @@
       <Variable x:TypeArguments="sd:DataTable" Name="dt_feedTable" />
       <Variable x:TypeArguments="x:String" Name="str_feedTableHtml" />
       <Variable x:TypeArguments="x:String" Name="str_htmlStyle" />
-      <Variable x:TypeArguments="x:Double" Name="dbl_sumOfIncome" />
-      <Variable x:TypeArguments="x:Double" Name="dbl_sumOfProforma" />
-      <Variable x:TypeArguments="x:Double" Name="dbl_sumOfTotal" />
+      <Variable x:TypeArguments="x:Int32" Name="int_sumOfIncome" />
+      <Variable x:TypeArguments="x:Int32" Name="int_sumOfProforma" />
+      <Variable x:TypeArguments="x:Int32" Name="int_sumOfTotal" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -192,14 +195,14 @@
 "            td {" &amp; vbCrLf &amp; _ 
 "                word-wrap: break-word;" &amp; vbCrLf &amp; _ 
 "                white-space: normal;" &amp; vbCrLf &amp; _ 
-"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                text-align: right;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            tr {" &amp; vbCrLf &amp; _ 
 "                margin: 0;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            th {" &amp; vbCrLf &amp; _ 
 "                padding: 12px 20px;" &amp; vbCrLf &amp; _ 
-"                text-align: center;" &amp; vbCrLf &amp; _ 
+"                text-align: right;" &amp; vbCrLf &amp; _ 
 "                border-top: 1px solid #444;" &amp; vbCrLf &amp; _ 
 "                border-bottom: 1px solid #444;" &amp; vbCrLf &amp; _ 
 "                background-color: #2c2c2c;" &amp; vbCrLf &amp; _ 
@@ -212,6 +215,10 @@
 "                table-layout: auto;" &amp; vbCrLf &amp; _  ' Auto layout for column widths
 "                border-collapse: collapse;" &amp; vbCrLf &amp; _ 
 "                border: 1px solid #444;" &amp; vbCrLf &amp; _ 
+"                text-align: right;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _ 
+"            table tr td:nth-child(2) table tr th:nth-child(2){" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .grand-total {" &amp; vbCrLf &amp; _ 
 "                background-color: #2c2c2c;" &amp; vbCrLf &amp; _ 
@@ -237,26 +244,26 @@
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
               <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfIncome]</OutArgument>
+                <OutArgument x:TypeArguments="x:Int32">[int_sumOfIncome]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Income")))]</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Income"))))]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
               <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfProforma]</OutArgument>
+                <OutArgument x:TypeArguments="x:Int32">[int_sumOfProforma]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Proforma")))]</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Proforma"))))]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
               <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfTotal]</OutArgument>
+                <OutArgument x:TypeArguments="x:Int32">[int_sumOfTotal]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Total")))]</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Total"))))]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
@@ -277,9 +284,9 @@
                             "&lt;/tr&gt;") &amp; 
       "&lt;tr class='grand-total'&gt;" &amp;
 	      "&lt;td&gt;Grand Total&lt;/td&gt;" &amp; 
-	      "&lt;td&gt;" &amp; dbl_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
-		  "&lt;td&gt;" &amp; dbl_sumOfProforma.ToString("N") &amp; "&lt;/td&gt;" &amp;
-	      "&lt;td&gt;" &amp; dbl_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
+	      "&lt;td&gt;" &amp; int_sumOfIncome.ToString("N0") &amp; "&lt;/td&gt;" &amp;
+		  "&lt;td&gt;" &amp; int_sumOfProforma.ToString("N0") &amp; "&lt;/td&gt;" &amp;
+	      "&lt;td&gt;" &amp; int_sumOfIncome.ToString("N0") &amp; "&lt;/td&gt;" &amp;
       "&lt;/tr&gt;" &amp; 
     "&lt;/table&gt;"
 )]</InArgument>
@@ -410,7 +417,7 @@
           <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned str_connectionString to&quot; + str_connectionString.ToString()]" />
         </Sequence>
         <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM') AS activityDate,  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total  -- עיצוב סכום כולל ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xA;&quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xA;&quot;WHERE &quot; &amp; vbCrLf &amp; _&#xA;&quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &gt;= &quot; &amp; vbCrLf &amp; _&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)&quot; &amp; vbCrLf &amp; _&#xA;&quot;            ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)&quot; &amp; vbCrLf &amp; _&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &lt;= &quot; &amp; vbCrLf &amp; _&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)&quot; &amp; vbCrLf &amp; _&#xA;&quot;            ELSE GETDATE()&quot; &amp; vbCrLf &amp; _&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xA;&quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM')  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xA;&quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;    activityDate ASC;&quot;]">
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM') AS activityDate,  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,  -- עיצוב סכום ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(balanceProforma) + SUM(balanceIncome), 'N0', 'he-IL') AS Total  -- עיצוב סכום כולל ללא אגורות עם מפריד אלפים&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;FROM [Halperin].[dbo].DH_ReportProjecsProfit&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;WHERE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    (projMan1Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;' OR projMan2Code = '&quot; &amp; in_dt_data(0)(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &gt;= &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) &lt;= &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            WHEN MONTH(GETDATE()) &lt;= 2 THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            ELSE GETDATE()&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;GROUP BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM')  -- Grouping by Year-Month&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;ORDER BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    activityDate ASC;&quot;]">
           <ui:ExecuteQuery.Parameters>
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:ExecuteQuery.Parameters>
@@ -538,7 +545,7 @@
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
               <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfIncome]</OutArgument>
+                <OutArgument x:TypeArguments="x:Int32">[int_sumOfIncome]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Income")))]</InArgument>
@@ -546,7 +553,7 @@
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
               <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfProforma]</OutArgument>
+                <OutArgument x:TypeArguments="x:Int32">[int_sumOfProforma]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Proforma")))]</InArgument>
@@ -554,7 +561,7 @@
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
               <ui:AssignOperation.To>
-                <OutArgument x:TypeArguments="x:Double">[dbl_sumOfTotal]</OutArgument>
+                <OutArgument x:TypeArguments="x:Int32">[int_sumOfTotal]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:Double">[dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Total")))]</InArgument>
@@ -578,9 +585,9 @@
                             "&lt;/tr&gt;") &amp; 
       "&lt;tr class='grand-total'&gt;" &amp;
 	      "&lt;td&gt;Grand Total&lt;/td&gt;" &amp; 
-	      "&lt;td&gt;" &amp; dbl_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
-		  "&lt;td&gt;" &amp; dbl_sumOfProforma.ToString("N") &amp; "&lt;/td&gt;" &amp;
-	      "&lt;td&gt;" &amp; dbl_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
+	      "&lt;td&gt;" &amp; int_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
+		  "&lt;td&gt;" &amp; int_sumOfProforma.ToString("N") &amp; "&lt;/td&gt;" &amp;
+	      "&lt;td&gt;" &amp; int_sumOfIncome.ToString("N") &amp; "&lt;/td&gt;" &amp;
       "&lt;/tr&gt;" &amp; 
     "&lt;/table&gt;"
 )]</InArgument>
