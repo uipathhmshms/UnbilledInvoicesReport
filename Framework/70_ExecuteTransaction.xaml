@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="BreakTriggerScopeInArgument" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1038,852</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1137,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -162,9 +162,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID5</x:Reference>
+      <x:Reference>__ReferenceID4</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">320,97.5</av:Point>
@@ -181,9 +181,7 @@
         </sap:WorkflowViewStateService.ViewState>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="RetrieveReportData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Utills\RetrieveReportData.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_reportData">
-              <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
-            </OutArgument>
+            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_reportData">[dt_data]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,355" sap2010:WorkflowViewState.IdRef="CommentOut_1">
@@ -223,20 +221,18 @@
         <ui:LogMessage sap:VirtualizedContainerService.HintSize="532,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Temporary folder created in path &quot; + System.IO.Directory.GetCurrentDirectory() + &quot;TempReport&quot;]" />
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\RetrieveManagerEmail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="532,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Utills\RetrieveManagerEmail.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_string_managerEmail">
-              <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_managerEmail" />
-            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_string_managerEmail">[str_managerEmail]</OutArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
-        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,271" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="532,272" sap2010:WorkflowViewState.IdRef="CommentOut_2">
           <ui:CommentOut.Body>
-            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,193" sap2010:WorkflowViewState.IdRef="Sequence_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[str_managerEmail]</OutArgument>
                 </Assign.To>
@@ -248,7 +244,7 @@
           </ui:CommentOut.Body>
         </ui:CommentOut>
         <ui:LogMessage sap:VirtualizedContainerService.HintSize="532,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned to str_managerEmail value:&quot;+str_managerEmail.ToString()]" />
-        <Assign sap2010:Annotation.AnnotationText="Excel file is neccessary in cases where there is more then one relevant row in report" sap:VirtualizedContainerService.HintSize="532,123" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign sap2010:Annotation.AnnotationText="Excel file is neccessary in cases where there is more then one relevant row in report" sap:VirtualizedContainerService.HintSize="532,124" sap2010:WorkflowViewState.IdRef="Assign_8">
           <Assign.To>
             <OutArgument x:TypeArguments="x:Boolean">[bool_isExcelNeeded]</OutArgument>
           </Assign.To>
@@ -269,29 +265,17 @@
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">320,198.5</av:Point>
               <av:Size x:Key="ShapeSize">200,109</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">420,307.5 420,327.5</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">420,307.5 420,356</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
+          <ui:InvokeWorkflowFile sap2010:Annotation.AnnotationText="Creates the HTML file by combinning the html and css created in the previous step" ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Generate_HTML.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Utills\Generate_HTML.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">
-                <VisualBasicReference x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
-              </OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_excelFileName" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="QueueItem_CurrentTransaction.SpecificContent(&quot;מנהל פרוייקט&quot;).tostring" />
-              </InArgument>
-              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">
-                <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_data" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_str_managerEmail">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_managerEmail" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="in_bool_isExcelNeede">
-                <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="bool_isExcelNeeded" />
-              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_str_htmlContent">[str_htmlContent]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_str_fileName">[str_excelFileName]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_str_managerName">[QueueItem_CurrentTransaction.SpecificContent("מנהל פרוייקט").tostring]</InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_str_managerEmail">[str_managerEmail]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="in_bool_isExcelNeede">[bool_isExcelNeeded]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -301,53 +285,69 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:InvokeWorkflowFile>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+            <FlowDecision x:Name="__ReferenceID2" Condition="[bool_isExcelNeeded]" DisplayName="Excel needed?" sap:VirtualizedContainerService.HintSize="80,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">320,327.5</av:Point>
-                  <av:Size x:Key="ShapeSize">200,52</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">420,379.5 420,416</av:PointCollection>
+                  <av:Point x:Key="ShapeLocation">380,356</av:Point>
+                  <av:Size x:Key="ShapeSize">80,87</av:Size>
+                  <av:PointCollection x:Key="TrueConnector">380,399.5 330,399.5</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">460,399.5 510,399.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_9">
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Data_Manipulation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Utills\Data_Manipulation.xaml">
-                      <ui:InvokeWorkflowFile.Arguments>
-                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_data">[dt_data]</InOutArgument>
-                      </ui:InvokeWorkflowFile.Arguments>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:InvokeWorkflowFile>
-                  </Sequence>
-                </ui:CommentOut.Body>
-              </ui:CommentOut>
-              <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID3" Condition="[bool_isExcelNeeded]" DisplayName="Excel needed?" sap:VirtualizedContainerService.HintSize="80,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+              <FlowDecision.True>
+                <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">380,416</av:Point>
-                      <av:Size x:Key="ShapeSize">80,87</av:Size>
-                      <av:PointCollection x:Key="TrueConnector">380,459.5 330,459.5</av:PointCollection>
-                      <av:PointCollection x:Key="FalseConnector">460,459.5 510,459.5</av:PointCollection>
+                      <av:Point x:Key="ShapeLocation">130,330</av:Point>
+                      <av:Size x:Key="ShapeSize">200,139</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">230,469 230,499 610,499 610,454</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <FlowDecision.True>
-                    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                  <ui:InvokeWorkflowFile sap2010:Annotation.AnnotationText="Creates the Excel and PDF files inside the temp  folder&#xA;+ executes a script that convert the excel sheet to html" ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Generate_Excel_And_PDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,139" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Utills\Generate_Excel_And_PDF.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InvokeWorkflowFile>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">130,390</av:Point>
-                          <av:Size x:Key="ShapeSize">200,139</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">230,529 230,559 610,559 610,514</av:PointCollection>
+                          <av:Point x:Key="ShapeLocation">510,345</av:Point>
+                          <av:Size x:Key="ShapeSize">200,109</av:Size>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Creates the Excel and PDF files inside the temp  folder&#xA;+ executes a script that convert the excel sheet to html" DisplayName="Generate_Excel_And_PDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,139" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Utills\Generate_Excel_And_PDF.xaml">
+                      <ui:InvokeWorkflowFile sap2010:Annotation.AnnotationText="sends mail to current manager with the pdf, excel and html attached " ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utills\Send_Report_Via_Mail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" Level="{x:Null}" LogEntry="{x:Null}" LogExit="{x:Null}" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Utills\Send_Report_Via_Mail.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">[str_excelFileName]</InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_data">[dt_data]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_htmlContent">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_htmlContent">
+                              <VisualBasicValue.Result>
+                                <OutArgument x:TypeArguments="x:String" />
+                              </VisualBasicValue.Result>
+                            </VisualBasicValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_projectManagerName">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="QueueItem_CurrentTransaction.SpecificContent(&quot;מנהל פרוייקט&quot;).tostring" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
+                            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="if(bool_isExcelNeeded,str_excelFileName,&quot;None&quot;)">
+                              <VisualBasicValue.Result>
+                                <OutArgument x:TypeArguments="x:String" />
+                              </VisualBasicValue.Result>
+                            </VisualBasicValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_str_emailAddress">
+                            <Literal x:TypeArguments="x:String">
+                              <Literal.Result>
+                                <OutArgument x:TypeArguments="x:String" />
+                              </Literal.Result>Lidorm@hms.co.il</Literal>
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -356,46 +356,14 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
-                      <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">510,405</av:Point>
-                              <av:Size x:Key="ShapeSize">200,109</av:Size>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="sends mail to current manager with the pdf, excel and html attached " DisplayName="Utills\Send_Report_Via_Mail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Utills\Send_Report_Via_Mail.xaml">
-                            <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_str_htmlContent">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_htmlContent" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_projectManagerName">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="dt_data(0)(&quot;מנהל פרוייקט&quot;).tostring" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_str_excelFileName">
-                                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="if(bool_isExcelNeeded,str_excelFileName,&quot;None&quot;)" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_str_emailAddress">
-                                <Literal x:TypeArguments="x:String">Lidorm@hms.co.il</Literal>
-                              </InArgument>
-                            </ui:InvokeWorkflowFile.Arguments>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:InvokeWorkflowFile>
-                        </FlowStep>
-                      </FlowStep.Next>
                     </FlowStep>
-                  </FlowDecision.True>
-                  <FlowDecision.False>
-                    <x:Reference>__ReferenceID0</x:Reference>
-                  </FlowDecision.False>
-                </FlowDecision>
-              </FlowStep.Next>
-            </FlowStep>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowDecision.True>
+              <FlowDecision.False>
+                <x:Reference>__ReferenceID0</x:Reference>
+              </FlowDecision.False>
+            </FlowDecision>
           </FlowStep.Next>
         </FlowStep>
       </FlowStep.Next>
@@ -403,7 +371,6 @@
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
-    <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID0</x:Reference>
   </Flowchart>
 </Activity>
