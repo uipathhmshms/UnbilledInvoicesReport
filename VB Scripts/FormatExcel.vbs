@@ -16,16 +16,16 @@ Sub FormatExcel()
 
     grandTotal = 0
     ProcessRows ws, objRange, months, grandTotal
-
 	' Remove the "סכום כולל במטבע עסקה" column (assuming it's column 6)
     ws.Columns(6).Delete
 	' Remove the "תאריך פעילות" column (assuming it's column 7)
 	ws.Columns(6).Delete
-	
+	' Merge duplicate rows based on "שם לקוח" and "קןד סעיף תקציבי"
+    MergeDuplicateRows ws
 	' Add grand total
 	lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row + 1
     AddGrandTotalRow ws, lastRow, months, grandTotal
-	
+	' Set excel data direction from right to left
 	SetSheetDirectionRTL ws
 End Sub
 
@@ -129,10 +129,59 @@ Function ParseIsraeliDate(dateString As String) As Date
     End If
 End Function
 
-' Sub to set the sheet direction to Right-to-Left
 Sub SetSheetDirectionRTL(sheet As Worksheet)
     With sheet
         .DisplayRightToLeft = True ' Set sheet direction to Right-to-Left
         .Cells.HorizontalAlignment = xlRight ' Align text to the right
     End With
 End Sub
+
+Sub MergeDuplicateRows(ws As Worksheet)
+    Dim lastRow As Long
+    Dim i As Long, j As Long
+    Dim dict As Object
+    Dim key As Variant ' Key must be a Variant for For Each loop
+    Dim rowValues As Variant
+    Dim columnCount As Integer
+    Dim newRow As Variant
+
+    Set dict = CreateObject("Scripting.Dictionary")
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+    columnCount = ws.UsedRange.Columns.Count
+
+    ' Loop through rows and consolidate data
+    For i = 2 To lastRow
+        key = ws.Cells(i, 3).Value & "_" & ws.Cells(i, 4).Value ' Ensure קוד סעיף תקציבי is part of the key
+
+        If dict.exists(key) Then
+            rowValues = dict(key)
+            ' Sum numeric values for the months while keeping empty cells blank
+            For j = 6 To columnCount
+                If IsNumeric(ws.Cells(i, j).Value) And ws.Cells(i, j).Value <> "" Then
+                    If rowValues(1, j) = "" Then
+                        rowValues(1, j) = ws.Cells(i, j).Value ' Keep original value if empty
+                    Else
+                        rowValues(1, j) = rowValues(1, j) + ws.Cells(i, j).Value ' Sum values if both are numbers
+                    End If
+                End If
+            Next j
+            dict(key) = rowValues
+        Else
+            ' Store the entire row in a dictionary (as a 2D array)
+            rowValues = ws.Rows(i).Value
+            dict.Add key, rowValues
+        End If
+    Next i
+
+    ' Clear old data
+    ws.Rows("2:" & lastRow).ClearContents
+
+    ' Write back merged data
+    i = 2
+    For Each key In dict.keys ' Ensure key is a Variant
+        newRow = dict(key)
+        ws.Rows(i).Value = newRow
+        i = i + 1
+    Next key
+End Sub
+
