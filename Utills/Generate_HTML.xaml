@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>998,852</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -146,14 +146,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID0">
+    <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">83,208.5</av:Point>
+          <av:Point x:Key="ShapeLocation">83,348.5</av:Point>
           <av:Size x:Key="ShapeSize">434,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,260.5 300,290.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,400.5 300,430.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
@@ -333,10 +333,10 @@
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID1">
+        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">200,290.5</av:Point>
+              <av:Point x:Key="ShapeLocation">200,430.5</av:Point>
               <av:Size x:Key="ShapeSize">200,52</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -344,15 +344,15 @@
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID2">
+    <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
           <av:Size x:Key="ShapeSize">200,81</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,208.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,198.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="512,542" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_8">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="str_connectionString" />
           <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
@@ -417,7 +417,7 @@
           <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned str_connectionString to&quot; + str_connectionString.ToString()]" />
         </Sequence>
         <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;SELECT &#xD;&#xA;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM') AS activityDate,  -- Grouping by Year-Month&#xD;&#xA;    FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS Income,  -- Format sum without decimals with thousands separator&#xD;&#xA;    FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS Proforma,  -- Format sum without decimals with thousands separator&#xD;&#xA;    FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS Total  -- Remove decimals from Total column&#xD;&#xA;FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&#xD;&#xA;WHERE &#xD;&#xA;    projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;'&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    AND CONVERT(DATE, activityDate, 103) BETWEEN &#xD;&#xA;        CASE &#xD;&#xA;            WHEN GETDATE() &lt;= DATEFROMPARTS(YEAR(GETDATE()), 3, 10) -- Until March 10th, display previous year too&#xD;&#xA;                THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year&#xD;&#xA;            ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Start of the current year&#xD;&#xA;        END&#xD;&#xA;        AND &#xD;&#xA;        EOMONTH(GETDATE(), -1)  -- Last day of the previous month&#xD;&#xA;GROUP BY &#xD;&#xA;    FORMAT(CONVERT(DATE, activityDate, 103), 'yyyy-MM')  -- Grouping by Year-Month&#xD;&#xA;ORDER BY &#xD;&#xA;    activityDate ASC;&quot;]">
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;WITH OrderedData AS (&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy') AS [חודש],  -- Format as MM/YY&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)) AS [Year],  -- Extract Year for Sorting&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)) AS [Month],  -- Extract Month for Sorting&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS [הכנסה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS [הכנסה צפויה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS [סה&quot;&quot;כ הכנסה]  -- Remove decimals From Total column&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    From [Halperin].[dbo].[DH_ReportProjecsProfit]&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    Where &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        (projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        AND CONVERT(DATE, activityDate, 103) BETWEEN &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 3, 10) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year only (not current year)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Full current year only&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            AND &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 3, 10) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)  -- Last day of the previous year&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 12, 31)  -- Last day of the current year&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    GROUP BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy')  -- Ensure proper grouping&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    ROW_NUMBER() OVER (ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC) AS [אינדקס של החודש],  -- Generate index column&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[חודש],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[הכנסה],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[הכנסה צפויה],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[סה&quot;&quot;כ הכנסה]&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;From OrderedData&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;Order By OrderedData.[Year] ASC, OrderedData.[Month] ASC;&quot;]">
           <ui:ExecuteQuery.Parameters>
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:ExecuteQuery.Parameters>
@@ -430,9 +430,99 @@
         <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
       </Sequence>
       <FlowStep.Next>
-        <x:Reference>__ReferenceID0</x:Reference>
+        <FlowStep x:Name="__ReferenceID2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,198.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,123</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,321.5 300,348.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap2010:Annotation.AnnotationText="Add Anual Budget to feedTable data" sap:VirtualizedContainerService.HintSize="639,932" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerAnualBudget" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:FilterDataTable DataTable="[dt_AnualBudget]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="577,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_currentManagerAnualBudget]" SelectColumnsMode="Keep">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">[QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+            </ui:FilterDataTable>
+            <Assign sap2010:Annotation.AnnotationText="Change the column name to &quot;תקציב צפוי&quot;" sap:VirtualizedContainerService.HintSize="577,112" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[dt_currentManagerAnualBudget.Columns(QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring).ColumnName]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">תקציב צפוי</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <ui:JoinDataTables DataTable1="[dt_feedTable]" DataTable2="[dt_currentManagerAnualBudget]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="577,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_1" JoinType="Inner" OutputDataTable="[dt_feedTable]">
+              <ui:JoinDataTables.Arguments>
+                <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
+                  <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
+                    <ui:JoinOperationArgument.Column1>
+                      <InArgument x:TypeArguments="x:String">["אינדקס של החודש"]</InArgument>
+                    </ui:JoinOperationArgument.Column1>
+                    <ui:JoinOperationArgument.Column2>
+                      <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
+                    </ui:JoinOperationArgument.Column2>
+                  </ui:JoinOperationArgument>
+                </scg:List>
+              </ui:JoinDataTables.Arguments>
+            </ui:JoinDataTables>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="577,337" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="541,258" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
+                    <ui:MultipleAssign.AssignOperations>
+                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                        <ui:AssignOperation Value="{x:Null}" sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="sd:DataTable">[dt_feedTable]</OutArgument>
+                          </ui:AssignOperation.To>
+                        </ui:AssignOperation>
+                      </scg:List>
+                    </ui:MultipleAssign.AssignOperations>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:MultipleAssign>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+          </Sequence>
+          <FlowStep.Next>
+            <x:Reference>__ReferenceID0</x:Reference>
+          </FlowStep.Next>
+        </FlowStep>
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
   </Flowchart>
 </Activity>
