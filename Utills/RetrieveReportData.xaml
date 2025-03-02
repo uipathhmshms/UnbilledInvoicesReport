@@ -45,56 +45,57 @@
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
       <AssemblyReference>System.Drawing.Common</AssemblyReference>
       <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Net.Mail</AssemblyReference>
       <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Windows.Forms.Design</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
-      <AssemblyReference>UiPath.Database</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>System.Console</AssemblyReference>
-      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
-      <AssemblyReference>System.Security.Permissions</AssemblyReference>
-      <AssemblyReference>System.ComponentModel</AssemblyReference>
-      <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
-      <AssemblyReference>PresentationFramework</AssemblyReference>
-      <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Gets relevant data for generating current manager's report" DisplayName="RetrieveData" sap:VirtualizedContainerService.HintSize="634,668" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -131,7 +132,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,404.5 300,424.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract relavent data from sql table" DataTable="[out_reportData]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;&#xD;&#xA;SELECT &#xD;&#xA;    projMan1Name AS [מנהל פרוייקט], &#xD;&#xA;    billingMethodName AS [שיטת חיוב], &#xD;&#xA;    accName AS [שם לקוח], &#xD;&#xA;    btCode AS [קוד סעיף תקציבי], &#xD;&#xA;    btName AS [סעיף תקציבי], &#xD;&#xA;    balanceProforma AS [סכום חייב במע&quot;&quot;מ במטבע עסקה], &#xD;&#xA;    activityDate AS [תאריך פעילות]&#xD;&#xA;FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&#xD;&#xA;WHERE &#xD;&#xA;    projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring &amp; &quot;'&#xD;&#xA;    AND balanceProforma &lt;&gt; 0&#xD;&#xA;    AND CONVERT(DATE, activityDate) &lt;= &#xD;&#xA;        CASE &#xD;&#xA;            WHEN DAY(GETDATE()) &gt;= 10 THEN &#xD;&#xA;                -- If today is the 10th or later, include data from the previous month and earlier months&#xD;&#xA;                EOMONTH(GETDATE(), -1)  -- End of the previous month&#xD;&#xA;            ELSE &#xD;&#xA;                -- If today is before the 10th, include data from two months ago and earlier months&#xD;&#xA;                EOMONTH(GETDATE(), -2)  -- End of two months ago&#xD;&#xA;        END&#xD;&#xA;    AND CONVERT(DATE, activityDate) &lt;= EOMONTH(GETDATE(), -1)  -- Up to the end of the previous month&#xD;&#xA;ORDER BY activityDate ASC;  -- Sort by activity date in ascending order&#xD;&#xA;&quot;]">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract relavent data from sql table" DataTable="[out_reportData]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;&#xA;SELECT &#xA;    projMan1Name AS [מנהל פרוייקט], &#xA;    billingMethodName AS [שיטת חיוב], &#xA;    accName AS [שם לקוח], &#xA;    btCode AS [קוד סעיף תקציבי], &#xA;    btName AS [סעיף תקציבי], &#xA;    balanceProforma AS [סכום חייב במע&quot;&quot;מ במטבע עסקה], &#xA;    activityDate AS [תאריך פעילות]&#xA;FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&#xA;WHERE &#xA;    projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring &amp; &quot;'&#xA;    AND balanceProforma &lt;&gt; 0&#xA;    AND CONVERT(DATE, activityDate) &lt;= &#xA;        CASE &#xA;            WHEN DAY(GETDATE()) &gt;= 10 THEN &#xA;                -- If today is the 10th or later, include data from the previous month and earlier months&#xA;                EOMONTH(GETDATE(), -1)  -- End of the previous month&#xA;            ELSE &#xA;                -- If today is before the 10th, include data from two months ago and earlier months&#xA;                EOMONTH(GETDATE(), -2)  -- End of two months ago&#xA;        END&#xA;    AND CONVERT(DATE, activityDate) &lt;= EOMONTH(GETDATE(), -1)  -- Up to the end of the previous month&#xA;ORDER BY activityDate ASC;  -- Sort by activity date in ascending order&#xA;&quot;]">
         <ui:ExecuteQuery.Parameters>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>

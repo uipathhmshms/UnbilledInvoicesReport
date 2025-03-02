@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1137,1924</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1687,1924</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Report_Via_Mail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -172,7 +172,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail from 'RPA_Office_Automation@hms.co.il' with subject title '&quot; &amp; &#xD;&#xA;    &quot;&amp;quot; בדיקה דוח חשבוניות עסקה&amp;quot; &amp;quot;&quot; &amp; in_projectManagerName &amp; &#xD;&#xA;    &quot;' and body '&quot; &amp; in_str_htmlContent &amp; &quot;' was sent to &quot; &amp; &#xD;&#xA;    in_str_emailAddress &amp; &#xD;&#xA;    &quot; with attachment 'TempReport\&quot; &amp; in_str_excelFileName &amp; &quot;.xlsx'&quot;]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="510,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Mail from 'RPA_Office_Automation@hms.co.il' with subject title '&quot; &amp; &#xA;    &quot;&amp;quot; בדיקה דוח חשבוניות עסקה&amp;quot; &amp;quot;&quot; &amp; in_projectManagerName &amp; &#xA;    &quot;' and body '&quot; &amp; in_str_htmlContent &amp; &quot;' was sent to &quot; &amp; &#xA;    in_str_emailAddress &amp; &#xA;    &quot; with attachment 'TempReport\&quot; &amp; in_str_excelFileName &amp; &quot;.xlsx'&quot;]" />
           </Sequence>
         </ActivityAction>
       </uma:Office365ApplicationScope.Body>

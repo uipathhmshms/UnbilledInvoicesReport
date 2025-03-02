@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>998,852</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>852,1212</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -49,6 +49,7 @@
       <x:String>UiPath.Database.Activities</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -136,6 +137,7 @@
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfIncome" />
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfProforma" />
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfTotal" />
+      <Variable x:TypeArguments="x:Int32" Name="int_sumOfExpectedBudget" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -156,7 +158,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,400.5 300,430.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,302" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
@@ -171,9 +173,9 @@
 "            }" &amp; vbCrLf &amp; _ 
 "            .header {" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
-"                border-bottom: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                border-bottom: 4px solid #68A6FD;" &amp; vbCrLf &amp; _ 
 "                margin-bottom: 20px;"  &amp; vbCrLf &amp; _ 
-"                background-color: #4b0082; "  &amp; vbCrLf &amp; _ 
+"                background-color: #1978EF; "  &amp; vbCrLf &amp; _ 
 "                color: white; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            .content {" &amp; vbCrLf &amp; _ 
@@ -184,12 +186,12 @@
 "            .footer {" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
-"                border-top: 4px solid #ff4081;" &amp; vbCrLf &amp; _ 
+"                border-top: 4px solid #68A6FD;" &amp; vbCrLf &amp; _ 
 "                margin-top: 20px;"  &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                position: fixed; " &amp; vbCrLf &amp; _ 
 "                bottom: 0;" &amp; vbCrLf &amp; _ 
-"                background-color: #2c2c2c; "  &amp; vbCrLf &amp; _ 
+"                background-color: #96C8FB; "  &amp; vbCrLf &amp; _ 
 "                color: white; "  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
 "            td {" &amp; vbCrLf &amp; _ 
@@ -225,7 +227,7 @@
 "                color: white;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _
 "            tr:hover {" &amp; vbCrLf &amp; _ 
-"                background-color: #ff4081;" &amp; vbCrLf &amp; _ 
+"                background-color: #1978EF;" &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _
 "            @media (prefers-color-scheme: dark) {" &amp; vbCrLf &amp; _ 
 "              .header, .footer {" &amp; vbCrLf &amp; _ 
@@ -247,7 +249,7 @@
                 <OutArgument x:TypeArguments="x:Int32">[int_sumOfIncome]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Income"))))]</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("הכנסה"))))]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
@@ -255,7 +257,15 @@
                 <OutArgument x:TypeArguments="x:Int32">[int_sumOfProforma]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Proforma"))))]</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("הכנסה צפויה"))))]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Int32">[int_sumOfExpectedBudget]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("תקציב"))))]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
@@ -263,7 +273,7 @@
                 <OutArgument x:TypeArguments="x:Int32">[int_sumOfTotal]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("Total"))))]</InArgument>
+                <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("סה""כ הכנסה"))))]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
@@ -287,6 +297,7 @@
 	      "&lt;td&gt;" &amp; int_sumOfIncome.ToString("N0") &amp; "&lt;/td&gt;" &amp;
 		  "&lt;td&gt;" &amp; int_sumOfProforma.ToString("N0") &amp; "&lt;/td&gt;" &amp;
 	      "&lt;td&gt;" &amp; int_sumOfTotal.ToString("N0") &amp; "&lt;/td&gt;" &amp;
+		   "&lt;td&gt;" &amp; int_sumOfExpectedBudget.ToString("N0") &amp; "&lt;/td&gt;" &amp;
       "&lt;/tr&gt;" &amp; 
     "&lt;/table&gt;"
 )]</InArgument>
@@ -313,7 +324,7 @@
 "           	 &lt;p&gt;עדכונים עסקיים למנהלים&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "       	 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "       	 &lt;div class=""content ""&gt;" &amp; vbCrLf &amp; _ 
-"          	        &lt;h1&gt;שלום &lt;span style=""color: #ff4081; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
+"          	        &lt;h1&gt;שלום &lt;span style=""color: #68A6FD; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
 "            	    &lt;h2&gt;	מצורף 'מבט על' של מצב ההכנסות בפרויקטים בהנהלתך מתחילת שנה ועד לסוף חודש קודם&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
 					If(in_bool_isExcelNeede,
 						" &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" ,
@@ -322,7 +333,7 @@
 "            	    &lt;p&gt;**המייל של המנהל אליו ישלח הדוח הוא:."&amp; in_str_managerEmail &amp;"&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "           &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "          &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
-"              | Created by &lt;span style=""color: #ff4081; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
+"              | Created by &lt;span style=""color: #68A6FD; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
 "          &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "        &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "    &lt;/body&gt;" &amp; vbCrLf &amp; _ 
@@ -417,7 +428,7 @@
           <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned str_connectionString to&quot; + str_connectionString.ToString()]" />
         </Sequence>
         <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;WITH OrderedData AS (&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy') AS [חודש],  -- Format as MM/YY&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)) AS [Year],  -- Extract Year for Sorting&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)) AS [Month],  -- Extract Month for Sorting&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS [הכנסה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS [הכנסה צפויה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS [סה&quot;&quot;כ הכנסה]  -- Remove decimals From Total column&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    From [Halperin].[dbo].[DH_ReportProjecsProfit]&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    Where &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        (projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        AND CONVERT(DATE, activityDate, 103) BETWEEN &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 3, 10) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year only (not current year)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Full current year only&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            AND &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 3, 10) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)  -- Last day of the previous year&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 12, 31)  -- Last day of the current year&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    GROUP BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy')  -- Ensure proper grouping&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    ROW_NUMBER() OVER (ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC) AS [אינדקס של החודש],  -- Generate index column&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[חודש],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[הכנסה],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[הכנסה צפויה],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[סה&quot;&quot;כ הכנסה]&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;From OrderedData&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;Order By OrderedData.[Year] ASC, OrderedData.[Month] ASC;&quot;]">
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;WITH OrderedData AS (&quot; &amp; vbCrLf &amp; _&#xA;&quot;    SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy') AS [חודש],  -- Format as MM/YY&quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)) AS [Year],  -- Extract Year for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)) AS [Month],  -- Extract Month for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS [הכנסה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS [הכנסה צפויה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS [סה&quot;&quot;כ הכנסה]  -- Remove decimals from Total column&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&quot; &amp; vbCrLf &amp; _&#xA;&quot;    WHERE &quot; &amp; vbCrLf &amp; _&#xA;&quot;        (projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;&quot;        AND CONVERT(DATE, activityDate, 103) BETWEEN &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year only (not current year)&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Full current year only&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;            AND &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)  -- Last day of the previous year&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 12, 31)  -- Last day of the current year&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;    GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy')  -- Ensure proper grouping&quot; &amp; vbCrLf &amp; _&#xA;&quot;)&quot; &amp; vbCrLf &amp; _&#xA;&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;    CAST(ROW_NUMBER() OVER (ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC) AS NVARCHAR) AS [אינדקס של החודש],  -- Convert index to string&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[חודש],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה צפויה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[סה&quot;&quot;כ הכנסה]&quot; &amp; vbCrLf &amp; _&#xA;&quot;FROM OrderedData&quot; &amp; vbCrLf &amp; _&#xA;&quot;ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC;&quot;]">
           <ui:ExecuteQuery.Parameters>
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:ExecuteQuery.Parameters>
@@ -434,13 +445,18 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,198.5</av:Point>
-              <av:Size x:Key="ShapeSize">200,123</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">300,321.5 300,348.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,138</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,336.5 300,348.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap2010:Annotation.AnnotationText="Add Anual Budget to feedTable data" sap:VirtualizedContainerService.HintSize="639,932" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence sap2010:Annotation.AnnotationText="Add 'Anual Budget' and 'anual budget running total' to feedTable data" sap:VirtualizedContainerService.HintSize="200,138" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerAnualBudget" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_feedTable2" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_runningTotal" />
+              <Variable x:TypeArguments="x:Int32" Default="0" Name="int_runningTotal" />
+              <Variable x:TypeArguments="sd:DataColumn" Name="ra" />
+              <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerAnualBudgetRunningTotal" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -448,7 +464,7 @@
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:FilterDataTable DataTable="[dt_AnualBudget]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="577,161" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_currentManagerAnualBudget]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Gets the anual budget of current manager" DataTable="[dt_AnualBudget]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,192" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dt_currentManagerAnualBudget]" SelectColumnsMode="Keep">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
@@ -460,21 +476,58 @@
                   <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
                 </scg:List>
               </ui:FilterDataTable.SelectColumns>
-            </ui:FilterDataTable>
-            <Assign sap2010:Annotation.AnnotationText="Change the column name to &quot;תקציב צפוי&quot;" sap:VirtualizedContainerService.HintSize="577,112" sap2010:WorkflowViewState.IdRef="Assign_4">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[dt_currentManagerAnualBudget.Columns(QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring).ColumnName]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">תקציב צפוי</InArgument>
-              </Assign.Value>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </Assign>
-            <ui:JoinDataTables DataTable1="[dt_feedTable]" DataTable2="[dt_currentManagerAnualBudget]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="577,60" sap2010:WorkflowViewState.IdRef="JoinDataTables_1" JoinType="Inner" OutputDataTable="[dt_feedTable]">
+            </ui:FilterDataTable>
+            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Gets the anual budget running total of current manager" DataTable="[dt_AnualBudgetRunningTotal]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[dt_currentManagerAnualBudgetRunningTotal]" SelectColumnsMode="Keep">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">[QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:FilterDataTable>
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Change the column with the manager identifier name to &quot;תקציב&quot; / &quot;תקציב מצטבר&quot;" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,189" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[dt_currentManagerAnualBudget.Columns(QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring).ColumnName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">תקציב</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[dt_currentManagerAnualBudgetRunningTotal.Columns(QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring).ColumnName]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">תקציב מצטבר</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:MultipleAssign>
+            <ui:JoinDataTables sap2010:Annotation.AnnotationText="Join feed table with anual budget table " DataTable1="[dt_feedTable]" DataTable2="[dt_currentManagerAnualBudget]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="479,91" sap2010:WorkflowViewState.IdRef="JoinDataTables_2" JoinType="Inner" OutputDataTable="[dt_feedTable]">
               <ui:JoinDataTables.Arguments>
                 <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
                   <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
@@ -487,34 +540,51 @@
                   </ui:JoinOperationArgument>
                 </scg:List>
               </ui:JoinDataTables.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:JoinDataTables>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="577,337" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="541,258" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign sap2010:Annotation.AnnotationText="" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
-                    <ui:MultipleAssign.AssignOperations>
-                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                        <ui:AssignOperation Value="{x:Null}" sap2010:WorkflowViewState.IdRef="AssignOperation_31">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="sd:DataTable">[dt_feedTable]</OutArgument>
-                          </ui:AssignOperation.To>
-                        </ui:AssignOperation>
-                      </scg:List>
-                    </ui:MultipleAssign.AssignOperations>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:MultipleAssign>
-                </Sequence>
-              </ui:CommentOut.Body>
-            </ui:CommentOut>
+            <ui:JoinDataTables sap2010:Annotation.AnnotationText="Join feed table with 'anual budget running total' table " DataTable1="[dt_feedTable]" DataTable2="[dt_currentManagerAnualBudgetRunningTotal]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="479,91" sap2010:WorkflowViewState.IdRef="JoinDataTables_4" JoinType="Inner" OutputDataTable="[dt_feedTable]">
+              <ui:JoinDataTables.Arguments>
+                <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
+                  <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
+                    <ui:JoinOperationArgument.Column1>
+                      <InArgument x:TypeArguments="x:String">["אינדקס של החודש"]</InArgument>
+                    </ui:JoinOperationArgument.Column1>
+                    <ui:JoinOperationArgument.Column2>
+                      <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
+                    </ui:JoinOperationArgument.Column2>
+                  </ui:JoinOperationArgument>
+                </scg:List>
+              </ui:JoinDataTables.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:JoinDataTables>
+            <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove columns -&#xA;אינדקס של החודש&#xD;&#xA;חודש/מנהל&#xD;&#xA;חודש/מנהל_1" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,233" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
+              <ui:FilterDataTable.Filters>
+                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                  <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
+                </scg:List>
+              </ui:FilterDataTable.Filters>
+              <ui:FilterDataTable.SelectColumns>
+                <scg:List x:TypeArguments="InArgument" Capacity="4">
+                  <InArgument x:TypeArguments="x:String">["אינדקס של החודש"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
+                  <InArgument x:TypeArguments="x:String">["חודש/מנהל_1"]</InArgument>
+                </scg:List>
+              </ui:FilterDataTable.SelectColumns>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:FilterDataTable>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="479,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
           </Sequence>
           <FlowStep.Next>
             <x:Reference>__ReferenceID0</x:Reference>
