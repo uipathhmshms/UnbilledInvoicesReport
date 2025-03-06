@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1135,852</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1047,834</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -138,6 +138,7 @@
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfProforma" />
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfTotal" />
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfExpectedBudget" />
+      <Variable x:TypeArguments="x:String" Name="str_percentagesColumnHtml" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -159,7 +160,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,650.5 300,680.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+      <ui:MultipleAssign DisplayName="Creates the HTML" sap:VirtualizedContainerService.HintSize="479,302" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
@@ -184,6 +185,12 @@
 "                width: 100%;"  &amp; vbCrLf &amp; _ 
 "                height 100%;"  &amp; vbCrLf &amp; _ 
 "            }" &amp; vbCrLf &amp; _ 
+"            .feedTableHeader, .feedTableFirstColumn {" &amp; vbCrLf &amp; _ 
+"                text-align: center;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _
+"            .feedTableNegativePercentages {" &amp; vbCrLf &amp; _ 
+"                color: red;" &amp; vbCrLf &amp; _ 
+"            }" &amp; vbCrLf &amp; _
 "            .footer {" &amp; vbCrLf &amp; _ 
 "                text-align: center;" &amp; vbCrLf &amp; _ 
 "                width: 100%;" &amp; vbCrLf &amp; _ 
@@ -269,7 +276,17 @@
                 <InArgument x:TypeArguments="x:Int32">[cint(dt_feedTable.AsEnumerable().Sum(Function(row) Convert.ToDouble(row("סה""כ הכנסה"))))]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_percentagesColumnHtml]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="AssignOperation_24">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">[str_feedTableHtml]</OutArgument>
               </ui:AssignOperation.To>
@@ -278,21 +295,28 @@
     "&lt;table border='1'&gt;" &amp; 
       "&lt;tr&gt;" &amp; 
       String.Join("", From c In dt_feedTable.Columns.Cast(Of DataColumn)().Take(4) 
-                     Select "&lt;th&gt;" &amp; c.ColumnName &amp; "&lt;/th&gt;") &amp; 
+                     Select "&lt;th class=""feedTableHeader""&gt;" &amp; c.ColumnName &amp; "&lt;/th&gt;") &amp; 
       "&lt;th&gt;&lt;/th&gt;" &amp; ' Adding the empty column after "סה"כ הכנסה"
       String.Join("", From c In dt_feedTable.Columns.Cast(Of DataColumn)().Skip(4) 
-                     Select "&lt;th&gt;" &amp; c.ColumnName &amp; "&lt;/th&gt;") &amp; 
+                     Select "&lt;th class=""feedTableHeader""&gt;" &amp; c.ColumnName &amp; "&lt;/th&gt;") &amp; 
       "&lt;/tr&gt;" &amp; 
       String.Join("", From r In dt_feedTable.Rows.Cast(Of DataRow)() 
                      Select "&lt;tr&gt;" &amp; 
-                            String.Join("", From i In r.ItemArray.Take(4) 
+                            "&lt;td class=""feedTableFirstColumn"" dir=""ltr""&gt;" &amp; r.ItemArray(0).ToString() &amp; "&lt;/td&gt;" &amp; ' Center align only first column
+                            String.Join("", From i In r.ItemArray.Skip(1).Take(3) 
                                            Select "&lt;td dir=""ltr""&gt;" &amp; i.ToString() &amp; "&lt;/td&gt;") &amp; 
                             "&lt;td&gt;&lt;/td&gt;" &amp; ' Adding the empty column after "סה"כ הכנסה"
-                            String.Join("", From i In r.ItemArray.Skip(4) 
-                                           Select "&lt;td dir=""ltr""&gt;" &amp; i.ToString() &amp; "&lt;/td&gt;") &amp; 
+                            String.Join("", From i In r.ItemArray.Skip(4).Select(Function(item, index) New With {.Value = item, .Index = index}) 
+                                           Select "&lt;td dir=""ltr""&gt;" &amp; 
+                                                  (If(i.Index = 2 AndAlso TypeOf i.Value Is String AndAlso i.Value.ToString().Contains("-"), 
+                                                      "&lt;span class=""feedTableNegativePercentages"" &gt;" &amp; "(" &amp; Math.Abs(Convert.ToInt32(Double.Parse(i.Value.ToString().Replace("%", "")))) &amp; ")%" &amp; "&lt;/span&gt;", 
+                                                      If(i.Index = 2 AndAlso TypeOf i.Value Is String AndAlso i.Value.ToString().Contains("%"),
+                                                         Math.Abs(Convert.ToInt32(Double.Parse(i.Value.ToString().Replace("%", "")))) &amp; "%",
+                                                         i.Value.ToString()))) &amp; 
+                                                  "&lt;/td&gt;") &amp; 
                             "&lt;/tr&gt;") &amp; 
       "&lt;tr class='grand-total'&gt;" &amp;
-	      "&lt;td&gt;Grand Total&lt;/td&gt;" &amp; 
+	      "&lt;td style=""text-align: center;""&gt;Grand Total&lt;/td&gt;" &amp; ' Center align the first column in Grand Total row
 	      "&lt;td&gt;" &amp; int_sumOfIncome.ToString("N0") &amp; "&lt;/td&gt;" &amp;
 	      "&lt;td&gt;" &amp; int_sumOfProforma.ToString("N0") &amp; "&lt;/td&gt;" &amp;
 	      "&lt;td&gt;" &amp; int_sumOfTotal.ToString("N0") &amp; "&lt;/td&gt;" &amp;
@@ -685,7 +709,7 @@
                       <av:PointCollection x:Key="ConnectorLocation">300,543.5 300,598.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove column -&#xA;אינדקס של החודש" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
+                  <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove column -&#xA;אינדקס של החודש" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
                     <ui:FilterDataTable.Filters>
                       <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                         <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
