@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1047,834</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1047,884</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -126,7 +126,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="634,819" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+  <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="644,819" sap2010:WorkflowViewState.IdRef="Flowchart_3">
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_feedTable" />
       <Variable x:TypeArguments="x:String" Name="str_feedTableHtml" />
@@ -142,19 +142,21 @@
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,97.5</av:PointCollection>
         <x:Double x:Key="Height">782.5</x:Double>
+        <x:Double x:Key="Width">610</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID4</x:Reference>
+      <x:Reference>__ReferenceID6</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">83,568.5</av:Point>
+          <av:Point x:Key="ShapeLocation">83,588.5</av:Point>
           <av:Size x:Key="ShapeSize">434,109</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,697.5 300,727.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign sap2010:Annotation.AnnotationText="Creates the stylee sheet,&#xD;&#xA;the feed table as html and finaly the html complete content&#xD;&#xA;" DisplayName="Creates HTML" sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+      <ui:MultipleAssign sap2010:Annotation.AnnotationText="Creates the stylee sheet,&#xA;the feed table as html and finaly the html complete content&#xA;" DisplayName="Creates HTML" sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
@@ -237,7 +239,10 @@
 "            @media (prefers-color-scheme: dark) {" &amp; vbCrLf &amp; _ 
 "              .header, .footer {" &amp; vbCrLf &amp; _ 
 "                   background-color: transparent "  &amp; vbCrLf &amp; _ 
-"                }" &amp; vbCrLf &amp; _ 
+"                }" &amp; vbCrLf &amp; _
+"              tr {" &amp; vbCrLf &amp; _ 
+"                  color: #68A6FD;" &amp; vbCrLf &amp; _ 
+"               }" &amp; vbCrLf &amp; _
 "            }" &amp; vbCrLf &amp; _ 
 "            @media (max-width: 768px) {" &amp; vbCrLf &amp; _ 
 "                table {" &amp; vbCrLf &amp; _ 
@@ -361,13 +366,24 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,727.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,52</av:Size>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Done with generating the HTML content&quot;]" />
+        </FlowStep>
+      </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+    <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
+          <av:Point x:Key="ShapeLocation">200,167.5</av:Point>
           <av:Size x:Key="ShapeSize">200,81</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,178.5 300,218.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,248.5 300,268.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_8">
@@ -435,7 +451,7 @@
           <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned str_connectionString to&quot; + str_connectionString.ToString()]" />
         </Sequence>
         <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;WITH OrderedData AS (&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy') AS [חודש],  -- Format as MM/YY&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)) AS [Year],  -- Extract Year for Sorting&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)) AS [Month],  -- Extract Month for Sorting&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS [הכנסה בפועל],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS [הכנסה צפויה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS [סה&quot;&quot;כ הכנסה]  -- Remove decimals from Total column&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    WHERE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        (projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        AND CONVERT(DATE, activityDate, 103) BETWEEN &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year only (not current year)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Full current year only&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            AND &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)  -- Last day of the previous year&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 12, 31)  -- Last day of the current year&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    GROUP BY &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy')  -- Ensure proper grouping&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;)&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    CAST(ROW_NUMBER() OVER (ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC) AS NVARCHAR) AS [אינדקס של החודש],  -- Convert index to string&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[חודש],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[הכנסה בפועל],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[הכנסה צפויה],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    OrderedData.[סה&quot;&quot;כ הכנסה],&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;    FORMAT(SUM(CAST(REPLACE(OrderedData.[סה&quot;&quot;כ הכנסה], ',', '') AS INT)) &quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;        OVER (ORDER BY OrderedData.[Year], OrderedData.[Month]), 'N0', 'he-IL') AS [הכנסה מצטברת]  -- Running total based on סה&quot;&quot;כ הכנסה&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;FROM OrderedData&quot; &amp; vbCrLf &amp; _&#xD;&#xA;&quot;ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC;&quot;]">
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;WITH OrderedData AS (&quot; &amp; vbCrLf &amp; _&#xA;&quot;    SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy') AS [חודש],  -- Format as MM/YY&quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)) AS [Year],  -- Extract Year for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)) AS [Month],  -- Extract Month for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS [הכנסה בפועל],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS [הכנסה צפויה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS [סה&quot;&quot;כ הכנסה]  -- Remove decimals from Total column&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&quot; &amp; vbCrLf &amp; _&#xA;&quot;    WHERE &quot; &amp; vbCrLf &amp; _&#xA;&quot;        (projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;&quot;        AND CONVERT(DATE, activityDate, 103) BETWEEN &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year only (not current year)&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Full current year only&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;            AND &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)  -- Last day of the previous year&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 12, 31)  -- Last day of the current year&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;    GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy')  -- Ensure proper grouping&quot; &amp; vbCrLf &amp; _&#xA;&quot;)&quot; &amp; vbCrLf &amp; _&#xA;&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;    CAST(ROW_NUMBER() OVER (ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC) AS NVARCHAR) AS [אינדקס של החודש],  -- Convert index to string&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[חודש],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה בפועל],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה צפויה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[סה&quot;&quot;כ הכנסה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(CAST(REPLACE(OrderedData.[סה&quot;&quot;כ הכנסה], ',', '') AS INT)) &quot; &amp; vbCrLf &amp; _&#xA;&quot;        OVER (ORDER BY OrderedData.[Year], OrderedData.[Month]), 'N0', 'he-IL') AS [הכנסה מצטברת]  -- Running total based on סה&quot;&quot;כ הכנסה&quot; &amp; vbCrLf &amp; _&#xA;&quot;FROM OrderedData&quot; &amp; vbCrLf &amp; _&#xA;&quot;ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC;&quot;]">
           <ui:ExecuteQuery.Parameters>
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:ExecuteQuery.Parameters>
@@ -451,20 +467,20 @@
         <FlowDecision x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="אם למנהל הנוכחי יש מוגדר תקציב צפוי, אז תופיע עמודה עם המזהה שלו באקסל תקציביים צפויים ובמקרה כזה נצטרך להוסיף לטבלת פיד (הטבלה שמצורפת למייל) עוד שלוש עמודות&#xA;" Condition="[dt_AnualBudgetRunningTotal.Columns.Contains(QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring)]" DisplayName="Has expected budget?" sap:VirtualizedContainerService.HintSize="123,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">238.5,218.5</av:Point>
+              <av:Point x:Key="ShapeLocation">238.5,268.5</av:Point>
               <av:Size x:Key="ShapeSize">123,87</av:Size>
               <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
-              <av:PointCollection x:Key="TrueConnector">238.5,262 110,262 110,288.5</av:PointCollection>
-              <av:PointCollection x:Key="FalseConnector">361.5,262 430,262 430,496.5 400,496.5</av:PointCollection>
+              <av:PointCollection x:Key="TrueConnector">238.5,312 110,312 110,338.5</av:PointCollection>
+              <av:PointCollection x:Key="FalseConnector">361.5,312 430,312 430,516.5 400,516.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowDecision.True>
             <FlowStep x:Name="__ReferenceID2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">10,288.5</av:Point>
+                  <av:Point x:Key="ShapeLocation">10,338.5</av:Point>
                   <av:Size x:Key="ShapeSize">200,123</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">110,411.5 110,496.5 200,496.5</av:PointCollection>
+                  <av:PointCollection x:Key="ConnectorLocation">110,461.5 110,516.5 200,516.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <Sequence sap2010:Annotation.AnnotationText="Add 'anual budget running total' to feedTable data" sap:VirtualizedContainerService.HintSize="200,123" sap2010:WorkflowViewState.IdRef="Sequence_10">
@@ -482,6 +498,7 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Start with adding 'anual budget running total' to feedTable data&quot;]" />
                 <ui:FilterDataTable sap2010:Annotation.AnnotationText="Gets the anual budget running total of current manager" DataTable="[dt_AnualBudgetRunningTotal]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[dt_currentManagerAnualBudgetRunningTotal]" SelectColumnsMode="Keep">
                   <ui:FilterDataTable.Filters>
                     <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
@@ -594,14 +611,15 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:MultipleAssign>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Done with adding 'anual budget running total' to feedTable data&quot;]" />
               </Sequence>
               <FlowStep.Next>
                 <FlowStep x:Name="__ReferenceID1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">200,449.5</av:Point>
+                      <av:Point x:Key="ShapeLocation">200,469.5</av:Point>
                       <av:Size x:Key="ShapeSize">200,94</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">300,543.5 300,568.5</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">300,563.5 300,588.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove column -&#xA;אינדקס של החודש" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
@@ -637,5 +655,19 @@
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <FlowStep x:Name="__ReferenceID6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
+          <av:Size x:Key="ShapeSize">200,52</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,149.5 300,167.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Start with generating the HTML content&quot;]" />
+      <FlowStep.Next>
+        <x:Reference>__ReferenceID5</x:Reference>
+      </FlowStep.Next>
+    </FlowStep>
   </Flowchart>
 </Activity>
