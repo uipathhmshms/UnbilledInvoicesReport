@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1047,884</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1179,884</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -343,7 +343,7 @@
 "       	 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "       	 &lt;div class=""content ""&gt;" &amp; vbCrLf &amp; _ 
 "          	        &lt;h1&gt;שלום &lt;span style=""color: #68A6FD; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
-"            	    &lt;h2&gt;	מצורף 'מבט על' של מצב ההכנסות בפרויקטים בהנהלתך מתחילת שנה ועד לסוף חודש קודם&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
+"            	    &lt;h2&gt;	מצורף 'מבט על' של מצב ההכנסות בפרויקטים בהנהלתך לשנת העסקים הנוכחית&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
 					If(in_bool_isExcelNeede,
 						" &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" ,
 						"")&amp; vbCrLf &amp; _
@@ -386,7 +386,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,248.5 300,268.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="548,917" sap2010:WorkflowViewState.IdRef="Sequence_8">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="str_connectionString" />
           <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
@@ -396,7 +396,7 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence DisplayName="Generate Connection String" sap:VirtualizedContainerService.HintSize="486,81" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="str_dbName" />
             <Variable x:TypeArguments="x:String" Name="str_serverName" />
@@ -450,8 +450,29 @@
           </Assign>
           <ui:LogMessage sap:VirtualizedContainerService.HintSize="434,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Assigned str_connectionString to&quot; + str_connectionString.ToString()]" />
         </Sequence>
-        <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="450,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
-        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;WITH OrderedData AS (&quot; &amp; vbCrLf &amp; _&#xA;&quot;    SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy') AS [חודש],  -- Format as MM/YY&quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)) AS [Year],  -- Extract Year for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)) AS [Month],  -- Extract Month for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS [הכנסה בפועל],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS [הכנסה צפויה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS [סה&quot;&quot;כ הכנסה]  -- Remove decimals from Total column&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&quot; &amp; vbCrLf &amp; _&#xA;&quot;    WHERE &quot; &amp; vbCrLf &amp; _&#xA;&quot;        (projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;&quot;        AND CONVERT(DATE, activityDate, 103) BETWEEN &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year only (not current year)&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Full current year only&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;            AND &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)  -- Last day of the previous year&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 12, 31)  -- Last day of the current year&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;    GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy')  -- Ensure proper grouping&quot; &amp; vbCrLf &amp; _&#xA;&quot;)&quot; &amp; vbCrLf &amp; _&#xA;&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;    CAST(ROW_NUMBER() OVER (ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC) AS NVARCHAR) AS [אינדקס של החודש],  -- Convert index to string&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[חודש],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה בפועל],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה צפויה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[סה&quot;&quot;כ הכנסה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(CAST(REPLACE(OrderedData.[סה&quot;&quot;כ הכנסה], ',', '') AS INT)) &quot; &amp; vbCrLf &amp; _&#xA;&quot;        OVER (ORDER BY OrderedData.[Year], OrderedData.[Month]), 'N0', 'he-IL') AS [הכנסה מצטברת]  -- Running total based on סה&quot;&quot;כ הכנסה&quot; &amp; vbCrLf &amp; _&#xA;&quot;FROM OrderedData&quot; &amp; vbCrLf &amp; _&#xA;&quot;ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC;&quot;]">
+        <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="486,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
+        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,335" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+          <ui:CommentOut.Body>
+            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data using sql query" DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="388,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_4" Sql="[&quot;WITH OrderedData AS (&quot; &amp; vbCrLf &amp; _&#xA;&quot;    SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy') AS [חודש],  -- Format as MM/YY&quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)) AS [Year],  -- Extract Year for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)) AS [Month],  -- Extract Month for Sorting&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceIncome), 'N0', 'he-IL') AS [הכנסה בפועל],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(SUM(balanceProforma), 'N0', 'he-IL') AS [הכנסה צפויה],  -- Format sum with thousands separator&quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CAST(SUM(balanceProforma) + SUM(balanceIncome) AS INT), 'N0', 'he-IL') AS [סה&quot;&quot;כ הכנסה]  -- Remove decimals from Total column&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&quot; &amp; vbCrLf &amp; _&#xA;&quot;    WHERE &quot; &amp; vbCrLf &amp; _&#xA;&quot;        (projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp; &quot;')&quot; &amp; vbCrLf &amp; _&#xA;&quot;        AND CONVERT(DATE, activityDate, 103) BETWEEN &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 1, 1)  -- Full previous year only (not current year)&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 1, 1)  -- Full current year only&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;            AND &quot; &amp; vbCrLf &amp; _&#xA;&quot;            CASE &quot; &amp; vbCrLf &amp; _&#xA;&quot;                WHEN GETDATE() &lt; DATEFROMPARTS(YEAR(GETDATE()), 2, 10) &quot; &amp; vbCrLf &amp; _&#xA;&quot;                    THEN DATEFROMPARTS(YEAR(GETDATE()) - 1, 12, 31)  -- Last day of the previous year&quot; &amp; vbCrLf &amp; _&#xA;&quot;                ELSE DATEFROMPARTS(YEAR(GETDATE()), 12, 31)  -- Last day of the current year&quot; &amp; vbCrLf &amp; _&#xA;&quot;            END&quot; &amp; vbCrLf &amp; _&#xA;&quot;    GROUP BY &quot; &amp; vbCrLf &amp; _&#xA;&quot;        YEAR(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        MONTH(CONVERT(DATE, activityDate, 103)), &quot; &amp; vbCrLf &amp; _&#xA;&quot;        FORMAT(CONVERT(DATE, activityDate, 103), 'MM/yy')  -- Ensure proper grouping&quot; &amp; vbCrLf &amp; _&#xA;&quot;)&quot; &amp; vbCrLf &amp; _&#xA;&quot;SELECT &quot; &amp; vbCrLf &amp; _&#xA;&quot;    CAST(ROW_NUMBER() OVER (ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC) AS NVARCHAR) AS [אינדקס של החודש],  -- Convert index to string&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[חודש],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה בפועל],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[הכנסה צפויה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    OrderedData.[סה&quot;&quot;כ הכנסה],&quot; &amp; vbCrLf &amp; _&#xA;&quot;    FORMAT(SUM(CAST(REPLACE(OrderedData.[סה&quot;&quot;כ הכנסה], ',', '') AS INT)) &quot; &amp; vbCrLf &amp; _&#xA;&quot;        OVER (ORDER BY OrderedData.[Year], OrderedData.[Month]), 'N0', 'he-IL') AS [הכנסה מצטברת]  -- Running total based on סה&quot;&quot;כ הכנסה&quot; &amp; vbCrLf &amp; _&#xA;&quot;FROM OrderedData&quot; &amp; vbCrLf &amp; _&#xA;&quot;ORDER BY OrderedData.[Year] ASC, OrderedData.[Month] ASC;&quot;]">
+                <ui:ExecuteQuery.Parameters>
+                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                </ui:ExecuteQuery.Parameters>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ExecuteQuery>
+            </Sequence>
+          </ui:CommentOut.Body>
+        </ui:CommentOut>
+        <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract Invoices data from stored procedure " DataTable="[dt_feedTable]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="486,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[&quot;EXEC [dbo].[unbilledInvoices_feedTable_RPA_Lidor] @ManagerID = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString() &amp;&quot;';&quot;]">
           <ui:ExecuteQuery.Parameters>
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:ExecuteQuery.Parameters>
@@ -461,7 +482,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
         </ui:ExecuteQuery>
-        <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="450,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
+        <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
       </Sequence>
       <FlowStep.Next>
         <FlowDecision x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="אם למנהל הנוכחי יש מוגדר תקציב צפוי, אז תופיע עמודה עם המזהה שלו באקסל תקציביים צפויים ובמקרה כזה נצטרך להוסיף לטבלת פיד (הטבלה שמצורפת למייל) עוד שלוש עמודות&#xA;" Condition="[dt_AnualBudgetRunningTotal.Columns.Contains(QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring)]" DisplayName="Has expected budget?" sap:VirtualizedContainerService.HintSize="123,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">

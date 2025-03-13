@@ -1,11 +1,11 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="RetrieveData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="RetrieveData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_reportData" Type="OutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1439,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1179,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RetrieveData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -40,6 +40,7 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Globalization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -98,10 +99,11 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Gets relevant data for generating current manager's report" DisplayName="RetrieveData" sap:VirtualizedContainerService.HintSize="634,668" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="Gets relevant data for generating current manager's report" DisplayName="RetrieveData" sap:VirtualizedContainerService.HintSize="634,793" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="str_connectionString" />
       <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
+      <Variable x:TypeArguments="s:DateTime" Name="date_maxActivityDate" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -110,15 +112,16 @@
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         <av:PointCollection x:Key="ConnectorLocation">90,77.5 90,168 200,168</av:PointCollection>
+        <x:Double x:Key="Height">725</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID3</x:Reference>
+      <x:Reference>__ReferenceID4</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">200,424.5</av:Point>
+          <av:Point x:Key="ShapeLocation">200,554.5</av:Point>
           <av:Size x:Key="ShapeSize">200,25</av:Size>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -127,12 +130,12 @@
     <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">200,310.5</av:Point>
+          <av:Point x:Key="ShapeLocation">200,440.5</av:Point>
           <av:Size x:Key="ShapeSize">200,94</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,404.5 300,424.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,534.5 300,554.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract relavent data from sql table" DataTable="[out_reportData]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;&#xA;SELECT &#xA;    projMan1Name AS [מנהל פרוייקט], &#xA;    billingMethodName AS [שיטת חיוב], &#xA;    accName AS [שם לקוח], &#xA;    btCode AS [קוד סעיף תקציבי], &#xA;    btName AS [סעיף תקציבי], &#xA;    balanceProforma AS [סכום חייב במע&quot;&quot;מ במטבע עסקה], &#xA;    activityDate AS [תאריך פעילות]&#xA;FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&#xA;WHERE &#xA;    projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring &amp; &quot;'&#xA;    AND balanceProforma &lt;&gt; 0&#xA;    AND CONVERT(DATE, activityDate) &lt;= &#xA;        CASE &#xA;            WHEN DAY(GETDATE()) &gt;= 10 THEN &#xA;                -- If today is the 10th or later, include data from the previous month and earlier months&#xA;                EOMONTH(GETDATE(), -1)  -- End of the previous month&#xA;            ELSE &#xA;                -- If today is before the 10th, include data from two months ago and earlier months&#xA;                EOMONTH(GETDATE(), -2)  -- End of two months ago&#xA;        END&#xA;    AND CONVERT(DATE, activityDate) &lt;= EOMONTH(GETDATE(), -1)  -- Up to the end of the previous month&#xA;ORDER BY activityDate ASC;  -- Sort by activity date in ascending order&#xA;&quot;]">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract relavent data from a procedure" DataTable="[out_reportData]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;EXEC unbilledInvoices_RPA_Lidor @ManagerID = '&quot; &amp; &#xD;&#xA;QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &#xD;&#xA;&quot;', @MaxDate = '&quot; &amp; date_maxActivityDate.ToString(&quot;yyyy-MM-dd&quot;, System.Globalization.CultureInfo.InvariantCulture) &amp; &quot;'&quot;]">
         <ui:ExecuteQuery.Parameters>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>
@@ -151,15 +154,41 @@
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,228.5</av:Point>
           <av:Size x:Key="ShapeSize">200,52</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,280.5 300,310.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,280.5 300,300.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:DatabaseConnect DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="Microsoft.Data.SqlClient" ConnectionString="[str_connectionString]" DatabaseConnection="[dbConn_connection]" />
       <FlowStep.Next>
-        <x:Reference>__ReferenceID1</x:Reference>
+        <FlowStep x:Name="__ReferenceID3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,300.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,124</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,424.5 300,440.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap2010:Annotation.AnnotationText="calculates activity date upper bound for the procedure argument&#xD;&#xA;" sap:VirtualizedContainerService.HintSize="434,125" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:DateTime">[date_maxActivityDate]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:DateTime" xml:space="preserve">[If(DateTime.Now.Day &gt;= 10, 
+   New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1), 
+   New DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(-1))]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <FlowStep.Next>
+            <x:Reference>__ReferenceID1</x:Reference>
+          </FlowStep.Next>
+        </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
@@ -225,5 +254,25 @@
         <x:Reference>__ReferenceID2</x:Reference>
       </FlowStep.Next>
     </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">20,603</av:Point>
+          <av:Size x:Key="ShapeSize">200,94</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">310,414.5 310,434.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract relavent data from sql table" DataTable="[out_reportData]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[&quot;&#xA;SELECT &#xA;    projMan1Name AS [מנהל פרוייקט], &#xA;    billingMethodName AS [שיטת חיוב], &#xA;    accName AS [שם לקוח], &#xA;    btCode AS [קוד סעיף תקציבי], &#xA;    btName AS [סעיף תקציבי], &#xA;    balanceProforma AS [סכום חייב במע&quot;&quot;מ במטבע עסקה], &#xA;    activityDate AS [תאריך פעילות]&#xA;FROM [Halperin].[dbo].[DH_ReportProjecsProfit]&#xA;WHERE &#xA;    projMan1Code = '&quot; &amp; QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring &amp; &quot;'&#xA;    AND balanceProforma &lt;&gt; 0&#xA;    AND CONVERT(DATE, activityDate) &lt;= &#xA;        CASE &#xA;            WHEN DAY(GETDATE()) &gt;= 10 THEN &#xA;                -- If today is the 10th or later, include data from the previous month and earlier months&#xA;                EOMONTH(GETDATE(), -1)  -- End of the previous month&#xA;            ELSE &#xA;                -- If today is before the 10th, include data from two months ago and earlier months&#xA;                EOMONTH(GETDATE(), -2)  -- End of two months ago&#xA;        END&#xA;    AND CONVERT(DATE, activityDate) &lt;= EOMONTH(GETDATE(), -1)  -- Up to the end of the previous month&#xA;ORDER BY activityDate ASC;  -- Sort by activity date in ascending order&#xA;&quot;]">
+        <ui:ExecuteQuery.Parameters>
+          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+        </ui:ExecuteQuery.Parameters>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ExecuteQuery>
+    </FlowStep>
+    <x:Reference>__ReferenceID3</x:Reference>
   </Flowchart>
 </Activity>

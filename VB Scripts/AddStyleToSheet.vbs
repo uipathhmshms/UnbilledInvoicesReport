@@ -9,6 +9,8 @@ Sub AddStyleToSheet()
 	' ------------------------------------------------Settings------------------------------------------------
     ' Get the used range in the worksheet
     Set usedRange = ActiveSheet.UsedRange
+	Dim ws As Worksheet
+	Set ws=ThisWorkbook.Sheets(1)
     
     lastRow = usedRange.Rows.Count
 	' Get the width (number of columns) of the used range
@@ -44,14 +46,16 @@ Sub AddStyleToSheet()
 	' Merge so the manager name will be written once
 	MergeFirstColumnRowsExceptFirstAndLast
 	
-	' Apply background color to the last row
-    ApplyLastRowBackgroundColor lastRow, intTableWidth
-
 	' Formats all numbers with comma separator and no decimal points	
 	FormatNumbers
 	
+	AddGrandTotalRow
+
 	' Applys table-like styling (borders, alternating row colors, etc.)
 	AddTableStyle
+	
+	SetSheetDirectionRTL ws
+	
 End Sub
 
 Sub MergeFirstColumnRowsExceptFirstAndLast()
@@ -206,4 +210,48 @@ Sub FormatNumbers()
 			cell.NumberFormat = "#,##0" ' Number format with comma separators
         End If
     Next cell
+End Sub
+
+Sub SetSheetDirectionRTL(sheet As Worksheet)
+    With sheet
+        .DisplayRightToLeft = True ' Set sheet direction to Right-to-Left
+        .Cells.HorizontalAlignment = xlRight ' Align text to the right
+    End With
+End Sub
+
+Sub AddGrandTotalRow()
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastCol As Long
+    Dim totalRow As Range
+    Dim col As Integer
+    
+    ' Set worksheet to active sheet
+    Set ws = ActiveSheet
+    
+    ' Find the last row with data
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+    
+    ' Find the last column with data
+    lastCol = ws.Cells(1, ws.Columns.Count).End(xlToLeft).Column
+    
+    ' Define the total row
+    Set totalRow = ws.Range(ws.Cells(lastRow + 1, 1), ws.Cells(lastRow + 1, lastCol))
+    
+    ' Insert "Grand Total" in the first column of the total row
+    totalRow.Cells(1, 1).Value = "Grand Total"
+    totalRow.Cells(1, 1).Font.Bold = True
+    totalRow.Cells(1, 1).HorizontalAlignment = xlCenter
+    
+    ' Sum up numeric values in each column and place them in the total row
+    For col = 5 To lastCol
+        If WorksheetFunction.Count(ws.Range(ws.Cells(2, col), ws.Cells(lastRow, col))) > 0 Then
+            totalRow.Cells(1, col).Formula = "=SUM(" & ws.Cells(2, col).Address & ":" & ws.Cells(lastRow, col).Address & ")"
+        End If
+    Next col
+    
+    ' Apply background color to the total row
+    totalRow.Interior.Color = RGB(51, 51, 51) ' Dark grey background
+    totalRow.Font.Color = RGB(255, 255, 255) ' White text color
+    totalRow.Font.Bold = True
 End Sub
