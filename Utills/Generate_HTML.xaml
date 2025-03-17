@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1179,884</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1109,884</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Generate_Html_File_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -126,7 +126,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="644,819" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+  <Flowchart DisplayName="Generate_Html_File" sap:VirtualizedContainerService.HintSize="644,987" sap2010:WorkflowViewState.IdRef="Flowchart_3">
     <Flowchart.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_feedTable" />
       <Variable x:TypeArguments="x:String" Name="str_feedTableHtml" />
@@ -134,6 +134,8 @@
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfIncome" />
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfProforma" />
       <Variable x:TypeArguments="x:Int32" Name="int_sumOfTotal" />
+      <Variable x:TypeArguments="x:Boolean" sap2010:Annotation.AnnotationText="יכיל אמת במידה ולמנהל הנוכחי יש תקציב שנתי צפוי" Name="bool_hasExpectedBudget" />
+      <Variable x:TypeArguments="x:String" Name="str_headerContent" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -141,22 +143,22 @@
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,97.5</av:PointCollection>
-        <x:Double x:Key="Height">782.5</x:Double>
+        <x:Double x:Key="Height">949.5</x:Double>
         <x:Double x:Key="Width">610</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID6</x:Reference>
+      <x:Reference>__ReferenceID7</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">83,588.5</av:Point>
+          <av:Point x:Key="ShapeLocation">83,658.5</av:Point>
           <av:Size x:Key="ShapeSize">434,109</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,697.5 300,727.5</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,767.5 300,797.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign sap2010:Annotation.AnnotationText="Creates the stylee sheet,&#xA;the feed table as html and finaly the html complete content&#xA;" DisplayName="Creates HTML" sap:VirtualizedContainerService.HintSize="434,109" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+      <ui:MultipleAssign sap2010:Annotation.AnnotationText="Creates the stylee sheet,&#xA;the feed table as html and finaly the html complete content&#xA;" DisplayName="Creates HTML" sap:VirtualizedContainerService.HintSize="479,359" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
@@ -321,6 +323,16 @@
 )]</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[str_headerContent]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(bool_hasExpectedBudget,
+" &lt;h2&gt;	מצורף 'מבט על' של עמידה משוערת בתקציב השנה ומצב ההכנסות בפרויקטים בהנהלתך לשנת העסקים הנוכחית&lt;/h2&gt;",
+" &lt;h2&gt;	מצורף 'מבט על' של מצב ההכנסות בפרויקטים בהנהלתך לשנת העסקים הנוכחית&lt;/h2&gt;")]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">[out_str_htmlContent]</OutArgument>
@@ -343,12 +355,11 @@
 "       	 &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "       	 &lt;div class=""content ""&gt;" &amp; vbCrLf &amp; _ 
 "          	        &lt;h1&gt;שלום &lt;span style=""color: #68A6FD; font-weight: bold;""&gt;" &amp; in_str_managerName &amp; "&lt;/span&gt;"&amp; ",&lt;/h1&gt;" &amp; vbCrLf &amp; _ 
-"            	    &lt;h2&gt;	מצורף 'מבט על' של מצב ההכנסות בפרויקטים בהנהלתך לשנת העסקים הנוכחית&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
+"            	    &lt;h2&gt;"&amp; str_headerContent &amp;"&lt;/h2&gt;" &amp; vbCrLf &amp; _ 
 					If(in_bool_isExcelNeede,
 						" &lt;p&gt;לפירוט הדוח המלא אנא עיין בקובץ האקסל המצורף.&lt;/p&gt;" ,
 						"")&amp; vbCrLf &amp; _
                         str_feedTableHtml &amp; vbCrLf &amp; _ 
-"            	    &lt;p&gt;**המייל של המנהל אליו ישלח הדוח הוא:."&amp; in_str_managerEmail &amp;"&lt;/p&gt;" &amp; vbCrLf &amp; _ 
 "           &lt;/div&gt;" &amp; vbCrLf &amp; _ 
 "          &lt;div class=""footer"" dir=""ltr""&gt;" &amp; vbCrLf &amp; _ 
 "              | Created by &lt;span style=""color: #68A6FD; font-weight: bold;""&gt; RPA team &lt;/span&gt; |" &amp; vbCrLf &amp; _ 
@@ -370,7 +381,7 @@
         <FlowStep x:Name="__ReferenceID4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">200,727.5</av:Point>
+              <av:Point x:Key="ShapeLocation">200,797.5</av:Point>
               <av:Size x:Key="ShapeSize">200,52</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -386,7 +397,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,248.5 300,268.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="548,917" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <Sequence DisplayName="Get data from DB" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_8">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="str_connectionString" />
           <Variable x:TypeArguments="ui:DatabaseConnection" Name="dbConn_connection" />
@@ -485,199 +496,221 @@
         <ui:DatabaseDisconnect DatabaseConnection="[dbConn_connection]" DisplayName="Disconnect from Database" sap:VirtualizedContainerService.HintSize="486,25" sap2010:WorkflowViewState.IdRef="DatabaseDisconnect_1" />
       </Sequence>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="אם למנהל הנוכחי יש מוגדר תקציב צפוי, אז תופיע עמודה עם המזהה שלו באקסל תקציביים צפויים ובמקרה כזה נצטרך להוסיף לטבלת פיד (הטבלה שמצורפת למייל) עוד שלוש עמודות&#xA;" Condition="[dt_AnualBudgetRunningTotal.Columns.Contains(QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).tostring)]" DisplayName="Has expected budget?" sap:VirtualizedContainerService.HintSize="123,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+        <FlowStep x:Name="__ReferenceID6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">238.5,268.5</av:Point>
-              <av:Size x:Key="ShapeSize">123,87</av:Size>
-              <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
-              <av:PointCollection x:Key="TrueConnector">238.5,312 110,312 110,338.5</av:PointCollection>
-              <av:PointCollection x:Key="FalseConnector">361.5,312 430,312 430,516.5 400,516.5</av:PointCollection>
+              <av:Point x:Key="ShapeLocation">200,268.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,52</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,320.5 300,338.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <FlowDecision.True>
-            <FlowStep x:Name="__ReferenceID2">
+          <Assign sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[bool_hasExpectedBudget]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">[dt_AnualBudgetRunningTotal.Columns.Contains(QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <FlowStep.Next>
+            <FlowDecision x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="אם למנהל הנוכחי יש מוגדר תקציב צפוי, אז תופיע עמודה עם המזהה שלו באקסל תקציביים צפויים ובמקרה כזה נצטרך להוסיף לטבלת פיד (הטבלה שמצורפת למייל) עוד שלוש עמודות&#xA;" DisplayName="Has expected budget?" sap:VirtualizedContainerService.HintSize="123,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+              <FlowDecision.Condition>
+                <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="bool_hasExpectedBudget" />
+              </FlowDecision.Condition>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">10,338.5</av:Point>
-                  <av:Size x:Key="ShapeSize">200,123</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">110,461.5 110,516.5 200,516.5</av:PointCollection>
+                  <av:Point x:Key="ShapeLocation">238.5,338.5</av:Point>
+                  <av:Size x:Key="ShapeSize">123,87</av:Size>
+                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                  <av:PointCollection x:Key="TrueConnector">238.5,382 110,382 110,408.5</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">361.5,382 430,382 430,586.5 400,586.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="Add 'anual budget running total' to feedTable data" sap:VirtualizedContainerService.HintSize="200,123" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                <Sequence.Variables>
-                  <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerAnualBudget" />
-                  <Variable x:TypeArguments="sd:DataTable" Name="dt_temp" />
-                  <Variable x:TypeArguments="sd:DataTable" Name="dt_runningTotal" />
-                  <Variable x:TypeArguments="x:Int32" Default="0" Name="int_runningTotal" />
-                  <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerAnualBudgetRunningTotal" />
-                  <Variable x:TypeArguments="sd:DataColumn" Name="dc_temp" />
-                </Sequence.Variables>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Start with adding 'anual budget running total' to feedTable data&quot;]" />
-                <ui:FilterDataTable sap2010:Annotation.AnnotationText="Gets the anual budget running total of current manager" DataTable="[dt_AnualBudgetRunningTotal]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[dt_currentManagerAnualBudgetRunningTotal]" SelectColumnsMode="Keep">
-                  <ui:FilterDataTable.Filters>
-                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                      <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
-                    </scg:List>
-                  </ui:FilterDataTable.Filters>
-                  <ui:FilterDataTable.SelectColumns>
-                    <scg:List x:TypeArguments="InArgument" Capacity="4">
-                      <InArgument x:TypeArguments="x:String">[QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring]</InArgument>
-                      <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
-                    </scg:List>
-                  </ui:FilterDataTable.SelectColumns>
+              <FlowDecision.True>
+                <FlowStep x:Name="__ReferenceID2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">10,408.5</av:Point>
+                      <av:Size x:Key="ShapeSize">200,123</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">110,531.5 110,586.5 200,586.5</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:FilterDataTable>
-                <ui:MultipleAssign sap2010:Annotation.AnnotationText="Change the column with the manager identifier name to &quot;תקציב&quot; / &quot;תקציב מצטבר&quot;" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,158" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
-                  <ui:MultipleAssign.AssignOperations>
-                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="x:String">[dt_currentManagerAnualBudgetRunningTotal.Columns(QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring).ColumnName]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="x:String">תקציב מצטבר</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                    </scg:List>
-                  </ui:MultipleAssign.AssignOperations>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:MultipleAssign>
-                <ui:JoinDataTables sap2010:Annotation.AnnotationText="Join feed table with 'anual budget running total' table " DataTable1="[dt_feedTable]" DataTable2="[dt_currentManagerAnualBudgetRunningTotal]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="479,91" sap2010:WorkflowViewState.IdRef="JoinDataTables_4" JoinType="Inner" OutputDataTable="[dt_feedTable]">
-                  <ui:JoinDataTables.Arguments>
-                    <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
-                      <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
-                        <ui:JoinOperationArgument.Column1>
-                          <InArgument x:TypeArguments="x:String">["אינדקס של החודש"]</InArgument>
-                        </ui:JoinOperationArgument.Column1>
-                        <ui:JoinOperationArgument.Column2>
+                  <Sequence sap2010:Annotation.AnnotationText="Add 'anual budget running total' to feedTable data" sap:VirtualizedContainerService.HintSize="200,123" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerAnualBudget" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="dt_temp" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="dt_runningTotal" />
+                      <Variable x:TypeArguments="x:Int32" Default="0" Name="int_runningTotal" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="dt_currentManagerAnualBudgetRunningTotal" />
+                      <Variable x:TypeArguments="sd:DataColumn" Name="dc_temp" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Start with adding 'anual budget running total' to feedTable data&quot;]" />
+                    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Gets the anual budget running total of current manager" DataTable="[dt_AnualBudgetRunningTotal]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[dt_currentManagerAnualBudgetRunningTotal]" SelectColumnsMode="Keep">
+                      <ui:FilterDataTable.Filters>
+                        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
+                        </scg:List>
+                      </ui:FilterDataTable.Filters>
+                      <ui:FilterDataTable.SelectColumns>
+                        <scg:List x:TypeArguments="InArgument" Capacity="4">
+                          <InArgument x:TypeArguments="x:String">[QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring]</InArgument>
                           <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
-                        </ui:JoinOperationArgument.Column2>
-                      </ui:JoinOperationArgument>
-                    </scg:List>
-                  </ui:JoinDataTables.Arguments>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:JoinDataTables>
-                <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove column -&#xA;חודש/מנהל" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
-                  <ui:FilterDataTable.Filters>
-                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                      <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
-                    </scg:List>
-                  </ui:FilterDataTable.Filters>
-                  <ui:FilterDataTable.SelectColumns>
-                    <scg:List x:TypeArguments="InArgument" Capacity="4">
-                      <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
-                    </scg:List>
-                  </ui:FilterDataTable.SelectColumns>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:FilterDataTable>
-                <ui:MultipleAssign sap2010:Annotation.AnnotationText="Adding 'percentages difference' column" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,209" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
-                  <ui:MultipleAssign.AssignOperations>
-                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="sd:DataTable">[dt_temp]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="sd:DataTable">[dt_feedTable.Clone()]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="sd:DataColumn">[dc_temp]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="sd:DataColumn">[dt_temp.Columns.Add("אחוז ביצוע תקציבי")]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
-                        <ui:AssignOperation.To>
-                          <OutArgument x:TypeArguments="sd:DataTable">[dt_feedTable]</OutArgument>
-                        </ui:AssignOperation.To>
-                        <ui:AssignOperation.Value>
-                          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[dt_feedTable.AsEnumerable().
+                        </scg:List>
+                      </ui:FilterDataTable.SelectColumns>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:FilterDataTable>
+                    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Change the column with the manager identifier name to &quot;תקציב&quot; / &quot;תקציב מצטבר&quot;" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,158" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[dt_currentManagerAnualBudgetRunningTotal.Columns(QueueItem_CurrentTransaction.SpecificContent("קוד מנהל פרויקט").tostring).ColumnName]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">תקציב מצטבר</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:MultipleAssign>
+                    <ui:JoinDataTables sap2010:Annotation.AnnotationText="Join feed table with 'anual budget running total' table " DataTable1="[dt_feedTable]" DataTable2="[dt_currentManagerAnualBudgetRunningTotal]" DisplayName="Join Data Tables" sap:VirtualizedContainerService.HintSize="479,91" sap2010:WorkflowViewState.IdRef="JoinDataTables_4" JoinType="Inner" OutputDataTable="[dt_feedTable]">
+                      <ui:JoinDataTables.Arguments>
+                        <scg:List x:TypeArguments="ui:JoinOperationArgument" Capacity="4">
+                          <ui:JoinOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EQ">
+                            <ui:JoinOperationArgument.Column1>
+                              <InArgument x:TypeArguments="x:String">["אינדקס של החודש"]</InArgument>
+                            </ui:JoinOperationArgument.Column1>
+                            <ui:JoinOperationArgument.Column2>
+                              <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
+                            </ui:JoinOperationArgument.Column2>
+                          </ui:JoinOperationArgument>
+                        </scg:List>
+                      </ui:JoinDataTables.Arguments>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:JoinDataTables>
+                    <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove column -&#xA;חודש/מנהל" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="479,203" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
+                      <ui:FilterDataTable.Filters>
+                        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                          <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
+                        </scg:List>
+                      </ui:FilterDataTable.Filters>
+                      <ui:FilterDataTable.SelectColumns>
+                        <scg:List x:TypeArguments="InArgument" Capacity="4">
+                          <InArgument x:TypeArguments="x:String">["חודש/מנהל"]</InArgument>
+                        </scg:List>
+                      </ui:FilterDataTable.SelectColumns>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:FilterDataTable>
+                    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Adding 'percentages difference' column" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,209" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="sd:DataTable">[dt_temp]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="sd:DataTable">[dt_feedTable.Clone()]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="sd:DataColumn">[dc_temp]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="sd:DataColumn">[dt_temp.Columns.Add("אחוז ביצוע תקציבי")]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="sd:DataTable">[dt_feedTable]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[dt_feedTable.AsEnumerable().
     Select(Function(row) dt_temp.LoadDataRow(
         row.ItemArray.Concat({If(Convert.ToDouble(row("תקציב מצטבר")) &lt;&gt; 0,
                                 (100 * (Convert.ToDouble(row("הכנסה מצטברת")) - Convert.ToDouble(row("תקציב מצטבר"))) / Convert.ToDouble(row("תקציב מצטבר"))).ToString("0.00") &amp; " %",
                                 "0.00 %")}).ToArray(), True)).CopyToDataTable()]</InArgument>
-                        </ui:AssignOperation.Value>
-                      </ui:AssignOperation>
-                    </scg:List>
-                  </ui:MultipleAssign.AssignOperations>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:MultipleAssign>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Done with adding 'anual budget running total' to feedTable data&quot;]" />
-              </Sequence>
-              <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID1">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">200,469.5</av:Point>
-                      <av:Size x:Key="ShapeSize">200,94</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">300,563.5 300,588.5</av:PointCollection>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove column -&#xA;אינדקס של החודש" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
-                    <ui:FilterDataTable.Filters>
-                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                        <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
-                      </scg:List>
-                    </ui:FilterDataTable.Filters>
-                    <ui:FilterDataTable.SelectColumns>
-                      <scg:List x:TypeArguments="InArgument" Capacity="4">
-                        <InArgument x:TypeArguments="x:String">["אינדקס של החודש"]</InArgument>
-                      </scg:List>
-                    </ui:FilterDataTable.SelectColumns>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:FilterDataTable>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:MultipleAssign>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Done with adding 'anual budget running total' to feedTable data&quot;]" />
+                  </Sequence>
                   <FlowStep.Next>
-                    <x:Reference>__ReferenceID0</x:Reference>
+                    <FlowStep x:Name="__ReferenceID1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">200,539.5</av:Point>
+                          <av:Size x:Key="ShapeSize">200,94</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">300,633.5 300,658.5</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:FilterDataTable sap2010:Annotation.AnnotationText="Remove column -&#xA;אינדקס של החודש" DataTable="[dt_feedTable]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dt_feedTable]" SelectColumnsMode="Remove">
+                        <ui:FilterDataTable.Filters>
+                          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                            <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="EQ" />
+                          </scg:List>
+                        </ui:FilterDataTable.Filters>
+                        <ui:FilterDataTable.SelectColumns>
+                          <scg:List x:TypeArguments="InArgument" Capacity="4">
+                            <InArgument x:TypeArguments="x:String">["אינדקס של החודש"]</InArgument>
+                          </scg:List>
+                        </ui:FilterDataTable.SelectColumns>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:FilterDataTable>
+                      <FlowStep.Next>
+                        <x:Reference>__ReferenceID0</x:Reference>
+                      </FlowStep.Next>
+                    </FlowStep>
                   </FlowStep.Next>
                 </FlowStep>
-              </FlowStep.Next>
-            </FlowStep>
-          </FlowDecision.True>
-          <FlowDecision.False>
-            <x:Reference>__ReferenceID1</x:Reference>
-          </FlowDecision.False>
-        </FlowDecision>
+              </FlowDecision.True>
+              <FlowDecision.False>
+                <x:Reference>__ReferenceID1</x:Reference>
+              </FlowDecision.False>
+            </FlowDecision>
+          </FlowStep.Next>
+        </FlowStep>
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID2</x:Reference>
     <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
-    <FlowStep x:Name="__ReferenceID6">
+    <FlowStep x:Name="__ReferenceID7">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,97.5</av:Point>
@@ -690,5 +723,6 @@
         <x:Reference>__ReferenceID5</x:Reference>
       </FlowStep.Next>
     </FlowStep>
+    <x:Reference>__ReferenceID6</x:Reference>
   </Flowchart>
 </Activity>
