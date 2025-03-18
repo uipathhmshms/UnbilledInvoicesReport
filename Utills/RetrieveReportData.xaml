@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1179,827</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1109,858</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RetrieveData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -135,7 +135,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,534.5 300,554.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract relavent data from a procedure" DataTable="[out_reportData]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;EXEC unbilledInvoices_RPA_Lidor @ManagerID = '&quot; &amp; &#xD;&#xA;QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &#xD;&#xA;&quot;', @MaxDate = '&quot; &amp; date_maxActivityDate.ToString(&quot;yyyy-MM-dd&quot;, System.Globalization.CultureInfo.InvariantCulture) &amp; &quot;'&quot;]">
+      <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Extract relavent data from a procedure" DataTable="[out_reportData]" DisplayName="Extract Invoices Data" ExistingDbConnection="[dbConn_connection]" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;EXEC unbilledInvoices_RPA_Lidor @ManagerID = '&quot; &amp; &#xD;&#xA;QueueItem_CurrentTransaction.SpecificContent(&quot;קוד מנהל פרויקט&quot;).ToString &amp; &#xD;&#xA;&quot;', @MaxDate = '&quot; &amp; date_maxActivityDate.ToString(&quot;yyyy-MM-dd&quot;, System.Globalization.CultureInfo.InvariantCulture) &amp; &quot;'&quot;]">
         <ui:ExecuteQuery.Parameters>
           <scg:Dictionary x:TypeArguments="x:String, Argument" />
         </ui:ExecuteQuery.Parameters>
@@ -167,7 +167,7 @@
               <av:PointCollection x:Key="ConnectorLocation">300,424.5 300,440.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap2010:Annotation.AnnotationText="calculates activity date upper bound for the procedure argument&#xD;&#xA;" sap:VirtualizedContainerService.HintSize="434,125" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign sap2010:Annotation.AnnotationText="calculates activity date upper bound for the procedure argument&#xA;" sap:VirtualizedContainerService.HintSize="200,124" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="s:DateTime">[date_maxActivityDate]</OutArgument>
             </Assign.To>
