@@ -43,14 +43,14 @@ Sub AddStyleToSheet()
 	' Aligns all cells to center and column E and C to the right
     AlignText
 	
+	AddGrandTotalRow
+		
 	' Merge so the manager name will be written once
 	MergeFirstColumnRowsExceptFirstAndLast
 	
 	' Formats all numbers with comma separator and no decimal points	
 	FormatNumbers
 	
-	AddGrandTotalRow
-
 	' Applys table-like styling (borders, alternating row colors, etc.)
 	AddTableStyle
 	
@@ -77,8 +77,8 @@ Sub MergeFirstColumnRowsExceptFirstAndLast()
         Exit Sub
     End If
     
-    ' Define the range to merge
-    Set mergeRange = ws.Range(ws.Cells(firstRow, 1), ws.Cells(lastRow - 1, 1))
+    ' Define the range to merge(dont merge with grandtotal)
+    Set mergeRange = ws.Range(ws.Cells(firstRow, 1), ws.Cells(lastRow-1, 1))
     
     ' Merge rows in the first column from the second row to the penultimate row
     mergeRange.Merge
